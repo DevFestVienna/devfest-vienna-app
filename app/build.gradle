@@ -36,16 +36,16 @@ android {
     buildToolsVersion '24.0.3'
 
     defaultConfig {
-        applicationId 'at.droidcon.vienna2016'
-        versionCode 13
-        versionName '1.0.9'
+        applicationId 'at.devfest.app'
+        versionCode 29
+        versionName '1.0.1'
 
         minSdkVersion 15
         targetSdkVersion 24
         resConfigs 'en'
 
         buildConfigField 'String', 'GIT_SHA', "\"${gitSha}\""
-        buildConfigField 'String', 'API_ENDPOINT', "\"https://droidcon.at/api/v1/\""
+        buildConfigField 'String', 'API_ENDPOINT', "\"http://www.devfest.at/api/v1/\""
         vectorDrawables.useSupportLibrary = true
     }
 

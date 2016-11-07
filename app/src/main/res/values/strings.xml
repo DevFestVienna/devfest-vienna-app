@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Core -->
-    <string name="app_name">droidcon Vienna 2016</string>
+    <string name="app_name">DevFest Vienna 2016</string>
 
     <!-- Connection error -->
     <string name="connection_error">Connection error</string>
@@ -10,9 +10,9 @@
     <!-- Drawer Activity -->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="drawer_header_headline">droidcon Vienna</string>
-    <string name="drawer_header_subheadline">16–17 September 2016</string>
-    <string name="drawer_nav_home">droidcon Vienna</string>
+    <string name="drawer_header_headline">DevFest Vienna</string>
+    <string name="drawer_header_subheadline">5-6 November 2016</string>
+    <string name="drawer_nav_home">DevFest Vienna</string>
     <string name="drawer_nav_agenda">All Sessions</string>
     <string name="drawer_nav_schedule">My Schedule</string>
     <string name="drawer_nav_speakers">Speakers</string>
@@ -55,14 +55,18 @@
     <!-- Venue -->
     <string name="venue_see_location">Locate on map</string>
     <string name="venue_see_location_error">Error opening map.\nDo you have Google Maps installed?</string>
-    <string name="venue_conference_title">Technikum Wien\nUniversity of Applied Sciences</string>
-    <string name="venue_conference_address">Höchstädtplatz 5, 1200 Vienna</string>
-    <string name="venue_conference_info">\nUniversity of Applied Sciences Technikum Wien (German: Fachhochschule Technikum Wien) was founded in 1994 and became Vienna\'s first university of applied sciences in 2000.\nIt is the largest technical university of applied sciences in Austria and offers thirteen bachelor\'s degree and seventeen master\'s degree programs.</string>
-    <string name="venue_afterparty_title">Café Alias\nMillennium City</string>
-    <string name="venue_afterparty_address">Handelskai 94–96, 1200 Vienna</string>
-    <string name="venue_afterparty_info">\nLocated at the first floor of Millennium City, the Café Alias will offer you free beer &amp; wine and will be the place of relaxing and networking after a compressed day of conference.\nIt is located in walking distance from the conference venue.\nDo not forget to bring your badge for enjoying the free beverages!</string>
+    <string name="venue_conference_title">Technische Universität Wien\nInstitut für Elektrotechnik</string>
+    <string name="venue_conference_address">Gußhausstraße 27-29, 1040 Vienna</string>
+    <string name="venue_conference_info">\nThe University for Technology has been founded in 1815 and is one of the most renowned universities in Austria.</string>
+    <string name="venue_afterparty_title">Nelson\'s</string>
+    <string name="venue_afterparty_address">Paniglgasse 14, 1040 Vienna</string>
+    <string name="venue_afterparty_info">\nLocated within the building complex of the TU Wien, Nelson\'s will offer you free beer &amp; wine and will be the place of relaxing and networking after a compressed day of conference.\nIt is located in walking distance from the conference venue.\nDo not forget to bring your badge for enjoying the free beverages!</string>
+    <string name="venue_hackathon_title">Stockwerk Coworking Space</string>
+    <string name="venue_hackathon_address">Pater-Schwartz-Gasse 11A, 1150 Vienna</string>
+    <string name="venue_hackathon_info">Located in close proximity to Westbahnhof and U6 Gumpendorferstraße, Stockwerk is one of Vienna\'s finest Coworking spaces.</string>
     <string name="venue_conference_tab">Conference</string>
     <string name="venue_afterparty_tab">Afterparty</string>
+    <string name="venue_hackathon_tab">Hackathon</string>
 
     <!-- Settings -->
     <string name="settings_notifications">Notifications</string>
@@ -70,7 +74,7 @@
     <string name="settings_notify_about_my_sessions_description">Display a notification when selected sessions are about to begin</string>
     <string name="settings_about">About</string>
     <string name="settings_about_version">Version</string>
-    <string name="settings_about_conf_title">droidcon Vienna</string>
+    <string name="settings_about_conf_title">DevFest Vienna</string>
     <string name="settings_about_sources_title">Source code</string>
     <string name="settings_about_developer_title">Good parts by</string>
     <string name="settings_about_hacker_title">Bugs made by</string>
@@ -80,19 +84,24 @@
     <string name="no_tweets_available">No Tweets</string>
 
     <!-- Home Screen -->
-    <string name="home_conference_before_title">droidcon Vienna 2016</string>
-    <string name="home_conference_before">droidcon Vienna starts on 16 September at the University of Applied Sciences (Fachhochschule) Technikum Wien.</string>
-    <string name="home_conference_after_title">droidcon Vienna 2016</string>
-    <string name="home_conference_after">droidcon Vienna 2016 was from 16 to 17 September at Technikum Wien.</string>
-    <string name="home_conference_last_day_title">droidcon Vienna is over</string>
+    <string name="home_conference_before_title">DevFest Vienna 2016</string>
+    <string name="home_conference_before">DevFest Vienna starts on 5 November at the University for Technology - TU Wien.</string>
+    <string name="home_conference_after_title">DevFest Vienna 2016</string>
+    <string name="home_conference_after">DevFest Vienna 2016 was from 5 to 6 November at TU Wien and Stockwerk.</string>
+    <string name="home_conference_last_day_title">DevFest Vienna is over</string>
     <string name="home_conference_last_day">Thanks for coming, see you again next year!</string>
     <string name="home_conference_next_day_title">See you tomorrow</string>
-    <string name="home_conference_next_day">This was the program for today. We will continue with great content tomorrow morning!</string>
+    <string name="home_conference_next_day">This was the program for today. We will continue with an awesome hackathon tomorrow morning!</string>
     <string name="home_session_current_title">Running now</string>
     <string name="home_session_next_title">Coming next</string>
     <string name="home_text_gold_sponsors">Gold Sponsors</string>
-    <string name="home_text_silver_sponsors">Silver Sponsors</string>
-    <string name="home_text_bronze_sponsors">Bronze Sponsors</string>
+    <string name="home_text_silver_sponsors">Silver Sponsor</string>
+    <string name="home_text_bronze_sponsors">Bronze Sponsor</string>
+    <string name="home_sponsor_willhaben">willhaben</string>
+    <string name="home_sponsor_erste">Erste Group</string>
+    <string name="home_sponsor_pavelka">Pavelka-Denk Personalberatung</string>
+    <string name="home_sponsor_openforce">openforce</string>
+    <string name="home_sponsor_easyname">easyname</string>
     <string name="home_sponsor_c4c_engineering">c4c engineering</string>
     <string name="home_sponsor_creative_workline">creative workline</string>
     <string name="home_sponsor_runtastic">runtastic</string>
