@@ -17,6 +17,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import timber.log.Timber;
 
 @Module
@@ -37,7 +38,10 @@ public final class DataModule {
     @Provides @Singleton OkHttpClient provideOkHttpClient(Application app) {
         File cacheDir = new File(app.getCacheDir(), "http");
         Cache cache = new Cache(cacheDir, DISK_CACHE_SIZE);
-        return new OkHttpClient.Builder().cache(cache).build();
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        return builder.addInterceptor(interceptor).cache(cache).build();
     }
 
     @Provides @Singleton Picasso providePicasso(Application app, OkHttpClient client) {

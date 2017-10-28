@@ -1,7 +1,7 @@
 package at.devfest.app.core.dagger.module;
 
 import at.devfest.app.BuildConfig;
-import at.devfest.app.data.network.DroidconService;
+import at.devfest.app.data.network.DevFestService;
 import com.squareup.moshi.Moshi;
 
 import javax.inject.Singleton;
@@ -26,7 +26,7 @@ public final class ApiModule {
     }
 
     @Provides @Singleton
-    DroidconService provideDroidconService(Retrofit retrofit) {
-        return retrofit.create(DroidconService.class);
+    DevFestService provideDevFestService(Retrofit retrofit) {
+        return retrofit.create(DevFestService.class);
     }
 }

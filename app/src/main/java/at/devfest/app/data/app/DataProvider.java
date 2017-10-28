@@ -5,7 +5,7 @@ import at.devfest.app.data.app.model.Session;
 import at.devfest.app.data.app.model.Speaker;
 import at.devfest.app.data.database.dao.SessionsDao;
 import at.devfest.app.data.database.dao.SpeakersDao;
-import at.devfest.app.data.network.DroidconService;
+import at.devfest.app.data.network.DevFestService;
 import at.devfest.app.data.network.NetworkMapper;
 
 import java.util.List;
@@ -22,13 +22,13 @@ public class DataProvider {
 
     private final AppMapper appMapper;
     private final NetworkMapper networkMapper;
-    private final DroidconService service;
+    private final DevFestService service;
     private final SpeakersDao speakersDao;
     private final SessionsDao sessionsDao;
     private final DataProviderCache cache;
 
     @Inject
-    public DataProvider(AppMapper appMapper, NetworkMapper networkMapper, DroidconService service, SpeakersDao speakersDao, SessionsDao sessionsDao) {
+    public DataProvider(AppMapper appMapper, NetworkMapper networkMapper, DevFestService service, SpeakersDao speakersDao, SessionsDao sessionsDao) {
         this.appMapper = appMapper;
         this.networkMapper = networkMapper;
         this.service = service;

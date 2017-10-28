@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import java8.util.Objects;
 import java8.util.stream.Collectors;
 
 import static java8.util.stream.StreamSupport.stream;
@@ -31,12 +32,15 @@ public class NetworkMapper {
             return null;
         }
 
-        return stream(from).map(speaker -> new at.devfest.app.data.app.model.Speaker(
-                speaker.getId(), speaker.getName(), speaker.getTitle(),
-                speaker.getBio(), speaker.getWebsite(), speaker.getTwitter(),
-                speaker.getGithub(), speaker.getGplus(), speaker.getXing(),
-                speaker.getLinkedin(), speaker.getPhoto())
-        ).collect(Collectors.toList());
+        return stream(from)
+                .filter(Objects::nonNull)
+                .map(speaker -> new at.devfest.app.data.app.model.Speaker(
+                        speaker.getId(), speaker.getName(), speaker.getTitle(),
+                        speaker.getBio(), speaker.getWebsite(), speaker.getTwitter(),
+                        speaker.getGithub(), speaker.getGplus(), speaker.getXing(),
+                        speaker.getLinkedin(), speaker.getPhoto())
+                )
+                .collect(Collectors.toList());
     }
 
     public List<at.devfest.app.data.app.model.Session> toAppSessions(@Nullable List<Session> from, @NonNull Map<Integer, at.devfest.app.data.app.model.Speaker> speakersMap) {
@@ -44,12 +48,16 @@ public class NetworkMapper {
             return null;
         }
 
-        return stream(from).map(session -> new at.devfest.app.data.app.model.Session(session.getId(),
-                Room.getFromId(session.getRoomId()).label,
-                appMapper.toSpeakersList(session.getSpeakersId(), speakersMap),
-                session.getTitle(), session.getDescription(),
-                session.getStartAt(), session.getStartAt().plusMinutes(session.getDuration()),
-                session.getPhoto())
-        ).collect(Collectors.toList());
+        return stream(from)
+                .filter(Objects::nonNull)
+                .map(session -> new at.devfest.app.data.app.model.Session(
+                        session.getId(),
+                        Room.getFromId(session.getRoomId()).label,
+                        appMapper.toSpeakersList(session.getSpeakersId(), speakersMap),
+                        session.getTitle(), session.getDescription(),
+                        session.getStartAt(), session.getStartAt().plusMinutes(session.getDuration()),
+                        session.getPhoto())
+                )
+                .collect(Collectors.toList());
     }
 }

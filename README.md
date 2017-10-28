@@ -1,6 +1,6 @@
-# droidcon Vienna 2016 Conference App
+# DevFest Vienna 2017 Conference App
 
-Official app for droidcon Vienna 2016
+Official app for DevFest Vienna 2017
 
 ![droidconat2016 Android screenshots][1]
 

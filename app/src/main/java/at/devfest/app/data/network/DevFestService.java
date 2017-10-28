@@ -8,11 +8,11 @@ import java.util.List;
 import retrofit2.http.GET;
 import rx.Observable;
 
-public interface DroidconService {
+public interface DevFestService {
 
-    @GET("sessions")
+    @GET("sessions.json")
     Observable<List<Session>> loadSessions();
 
-    @GET("speakers")
+    @GET("speakers.json")
     Observable<List<Speaker>> loadSpeakers();
 }

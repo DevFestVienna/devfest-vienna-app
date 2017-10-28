@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Core -->
-    <string name="app_name">DevFest Vienna 2016</string>
+    <string name="app_name">DevFest Vienna 2017</string>
 
     <!-- Connection error -->
     <string name="connection_error">Connection error</string>
@@ -11,7 +11,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_header_headline">DevFest Vienna</string>
-    <string name="drawer_header_subheadline">5-6 November 2016</string>
+    <string name="drawer_header_subheadline">25&#8211;26 November 2017</string>
     <string name="drawer_nav_home">DevFest Vienna</string>
     <string name="drawer_nav_agenda">All Sessions</string>
     <string name="drawer_nav_schedule">My Schedule</string>
@@ -56,7 +56,7 @@
     <string name="venue_see_location">Locate on map</string>
     <string name="venue_see_location_error">Error opening map.\nDo you have Google Maps installed?</string>
     <string name="venue_conference_title">Technische Universität Wien\nInstitut für Elektrotechnik</string>
-    <string name="venue_conference_address">Gußhausstraße 27-29, 1040 Vienna</string>
+    <string name="venue_conference_address">Gußhausstraße 27&#8211;29, 1040 Vienna</string>
     <string name="venue_conference_info">\nThe University for Technology has been founded in 1815 and is one of the most renowned universities in Austria.</string>
     <string name="venue_afterparty_title">Nelson\'s</string>
     <string name="venue_afterparty_address">Paniglgasse 14, 1040 Vienna</string>
@@ -84,14 +84,14 @@
     <string name="no_tweets_available">No Tweets</string>
 
     <!-- Home Screen -->
-    <string name="home_conference_before_title">DevFest Vienna 2016</string>
-    <string name="home_conference_before">DevFest Vienna starts on 5 November at the University for Technology - TU Wien.</string>
-    <string name="home_conference_after_title">DevFest Vienna 2016</string>
-    <string name="home_conference_after">DevFest Vienna 2016 was from 5 to 6 November at TU Wien and Stockwerk.</string>
+    <string name="home_conference_before_title">DevFest Vienna 2017</string>
+    <string name="home_conference_before">DevFest Vienna starts on 25 November at the University for Technology - TU Wien.</string>
+    <string name="home_conference_after_title">DevFest Vienna 2017</string>
+    <string name="home_conference_after">DevFest Vienna 2017 was from 25 to 26 November at TU Wien and Stockwerk.</string>
     <string name="home_conference_last_day_title">DevFest Vienna is over</string>
     <string name="home_conference_last_day">Thanks for coming, see you again next year!</string>
     <string name="home_conference_next_day_title">See you tomorrow</string>
-    <string name="home_conference_next_day">This was the program for today. We will continue with an awesome hackathon tomorrow morning!</string>
+    <string name="home_conference_next_day">This was the program for today. We will continue with an awesome workshop tomorrow morning!</string>
     <string name="home_session_current_title">Running now</string>
     <string name="home_session_next_title">Coming next</string>
     <string name="home_text_gold_sponsors">Gold Sponsors</string>

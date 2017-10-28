@@ -18,6 +18,7 @@
 
 -printmapping mappings.txt
 -keepattributes SourceFile,LineNumberTable,InnerClasses,EnclosingMethod
+-dontwarn javax.annotation.**
 
 # Keep the BuildConfig
 -keep class at.devfest.app.BuildConfig { *; }

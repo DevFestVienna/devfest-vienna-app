@@ -23,7 +23,7 @@ import at.devfest.app.BuildConfig;
 import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.LOLLIPOP, packageName = "at.droidcon.app")
+@Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.LOLLIPOP, packageName = "at.devfest.app")
 public class IntentsTest {
 
     private Activity activity;
