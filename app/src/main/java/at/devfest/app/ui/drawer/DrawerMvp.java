@@ -5,8 +5,6 @@ import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 
-import at.devfest.app.ui.home.HomeMvp;
-
 public interface DrawerMvp {
 
     interface View {

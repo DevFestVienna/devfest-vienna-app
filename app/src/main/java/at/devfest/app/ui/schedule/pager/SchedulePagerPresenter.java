@@ -7,7 +7,6 @@ import android.view.View;
 import at.devfest.app.data.app.DataProvider;
 import at.devfest.app.data.app.model.Schedule;
 import at.devfest.app.ui.BaseFragmentPresenter;
-
 import icepick.State;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -16,9 +15,9 @@ import timber.log.Timber;
 
 public class SchedulePagerPresenter extends BaseFragmentPresenter<SchedulePagerMvp.View> implements SchedulePagerMvp.Presenter {
 
-    @State Schedule schedule;
-
     private final DataProvider dataProvider;
+    @State
+    Schedule schedule;
     private Subscription scheduleSubscription;
 
     public SchedulePagerPresenter(SchedulePagerMvp.View view, DataProvider dataProvider) {

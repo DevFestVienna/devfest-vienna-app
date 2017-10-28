@@ -3,14 +3,13 @@ package at.devfest.app.ui.home;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import at.devfest.app.data.app.SelectedSessionsMemory;
-import at.devfest.app.data.app.model.Session;
-import at.devfest.app.ui.sessions.list.SessionsListEntry;
-import at.devfest.app.ui.sessions.list.SessionsListMvp;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import at.devfest.app.data.app.SelectedSessionsMemory;
+import at.devfest.app.data.app.model.Session;
+import at.devfest.app.ui.sessions.list.SessionsListMvp;
 
 /**
  * Created by helmuth on 31/08/16.

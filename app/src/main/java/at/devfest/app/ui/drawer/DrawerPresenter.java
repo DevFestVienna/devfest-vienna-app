@@ -18,8 +18,12 @@ import icepick.State;
 
 public class DrawerPresenter extends BaseActivityPresenter<DrawerMvp.View> implements DrawerMvp.Presenter {
 
-    @State @StringRes int toolbarTitle;
-    @State @IdRes int selectedItemId;
+    @State
+    @StringRes
+    int toolbarTitle;
+    @State
+    @IdRes
+    int selectedItemId;
 
     private Configuration config;
     private Analytics analytics;
@@ -30,7 +34,8 @@ public class DrawerPresenter extends BaseActivityPresenter<DrawerMvp.View> imple
         this.analytics = analytics;
     }
 
-    @IdRes private int getFirstItem() {
+    @IdRes
+    private int getFirstItem() {
         config.refresh();
         if (config.getBoolean("show_home_screen")) {
             return R.id.drawer_nav_home;

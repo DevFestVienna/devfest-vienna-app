@@ -2,7 +2,7 @@ package at.devfest.app.utils;
 
 /**
  * Created by helmuth on 19/08/16.
- *
+ * <p>
  * This interface defines getting configuration values,
  * e.g. which drawer menu is the default or whether there
  * shall be a home entry.
@@ -10,8 +10,12 @@ package at.devfest.app.utils;
 
 public interface Configuration {
     public void refresh();
+
     public boolean getBoolean(String key);
+
     public long getLong(String key);
+
     public double getDouble(String key);
+
     public String getString(String key);
 }

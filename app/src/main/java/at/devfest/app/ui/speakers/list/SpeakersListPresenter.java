@@ -1,12 +1,11 @@
 package at.devfest.app.ui.speakers.list;
 
-import at.devfest.app.data.app.DataProvider;
-import at.devfest.app.data.app.model.Speaker;
-import at.devfest.app.ui.BaseFragmentPresenter;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
+import at.devfest.app.data.app.DataProvider;
+import at.devfest.app.data.app.model.Speaker;
+import at.devfest.app.ui.BaseFragmentPresenter;
 import icepick.State;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -15,9 +14,9 @@ import timber.log.Timber;
 
 public class SpeakersListPresenter extends BaseFragmentPresenter<SpeakersListMvp.View> implements SpeakersListMvp.Presenter {
 
-    @State ArrayList<Speaker> speakers;
-
     private final DataProvider dataProvider;
+    @State
+    ArrayList<Speaker> speakers;
     private Subscription speakersSubscription;
 
     public SpeakersListPresenter(SpeakersListMvp.View view, DataProvider dataProvider) {

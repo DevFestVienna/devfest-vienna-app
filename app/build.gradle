@@ -3,15 +3,11 @@ buildscript {
         mavenCentral()
         maven { url 'https://plugins.gradle.org/m2/' }
         maven { url 'https://maven.fabric.io/public' }
-        // maven { url 'https://maven.google.com' }
         google()
     }
     dependencies {
-        // classpath 'me.tatarka:gradle-retrolambda:3.3.0'
-        // classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.google.gms:google-services:3.1.1'
         classpath 'io.fabric.tools:gradle:1.+'
-        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5'
     }
 }
 
@@ -19,17 +15,18 @@ repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
     maven { url 'https://maven.fabric.io/public' }
-    // maven { url 'https://maven.google.com' }
     google()
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+androidExtensions {
+    experimental = true
+}
 apply plugin: 'io.fabric'
-// apply plugin: 'me.tatarka.retrolambda'
-// apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.android.application'
 apply from: rootProject.file('settings/gradle/jacoco.gradle')
-apply from: rootProject.file('settings/gradle/sonarqube.gradle')
 
 def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
 
@@ -68,12 +65,10 @@ android {
 
             proguardFile rootProject.file('settings/proguard/fragmentargs.pro')
             proguardFile rootProject.file('settings/proguard/icepick.pro')
-            proguardFile rootProject.file('settings/proguard/lombok.pro')
             proguardFile rootProject.file('settings/proguard/okhttp3.pro')
             proguardFile rootProject.file('settings/proguard/okio.pro')
             proguardFile rootProject.file('settings/proguard/picasso.pro')
             proguardFile rootProject.file('settings/proguard/retrofit2.pro')
-            // proguardFile rootProject.file('settings/proguard/retrolambda.pro')
             proguardFile rootProject.file('settings/proguard/rx-java.pro')
             proguardFile rootProject.file('settings/proguard/streamsupport.pro')
             proguardFile rootProject.file('settings/proguard/support-design.pro')
@@ -126,9 +121,6 @@ dependencies {
     compile "com.google.firebase:firebase-core:$playVersion"
     compile "com.google.firebase:firebase-database:$playVersion"
 
-    provided 'org.projectlombok:lombok:1.16.10'
-    annotationProcessor 'org.projectlombok:lombok:1.16.10'
-
     compile 'net.sourceforge.streamsupport:streamsupport:1.5.1'
 
     compile "com.google.dagger:dagger:$daggerVersion"
@@ -163,7 +155,7 @@ dependencies {
 
     compile 'com.squareup.sqlbrite:sqlbrite:0.7.0'
 
-    compile 'com.jakewharton.threetenabp:threetenabp:1.0.4'
+    compile 'com.jakewharton.threetenabp:threetenabp:1.0.5'
 
     compile('com.twitter.sdk.android:twitter:2.0.1@aar') {
         transitive = true;
@@ -173,6 +165,7 @@ dependencies {
     testCompile 'com.google.truth:truth:0.30'
     testCompile 'org.mockito:mockito-core:2.7.13'
     testCompile 'org.robolectric:robolectric:3.1.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
 // print build finish time

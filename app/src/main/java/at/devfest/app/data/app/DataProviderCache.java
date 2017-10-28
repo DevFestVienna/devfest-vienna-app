@@ -1,12 +1,11 @@
 package at.devfest.app.data.app;
 
-import at.devfest.app.data.app.model.Session;
-import at.devfest.app.data.app.model.Speaker;
-
 import org.threeten.bp.LocalDateTime;
 
 import java.util.List;
 
+import at.devfest.app.data.app.model.Session;
+import at.devfest.app.data.app.model.Speaker;
 import timber.log.Timber;
 
 public class DataProviderCache {

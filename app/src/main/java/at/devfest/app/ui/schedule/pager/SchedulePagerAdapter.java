@@ -5,13 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import at.devfest.app.R;
-import at.devfest.app.data.app.model.Schedule;
-import at.devfest.app.ui.schedule.day.ScheduleDayFragmentBuilder;
-
 import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.Locale;
+
+import at.devfest.app.R;
+import at.devfest.app.data.app.model.Schedule;
+import at.devfest.app.ui.schedule.day.ScheduleDayFragmentBuilder;
 
 public class SchedulePagerAdapter extends FragmentPagerAdapter {
 
@@ -33,12 +33,12 @@ public class SchedulePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return schedule.size();
+        return schedule.getSize();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dayPattern, Locale.getDefault());
-        return schedule.get(position).getDay().format(formatter);
+        return schedule.get(position).getDate().format(formatter);
     }
 }

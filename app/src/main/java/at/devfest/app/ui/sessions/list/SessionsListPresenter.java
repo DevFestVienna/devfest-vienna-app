@@ -3,18 +3,18 @@ package at.devfest.app.ui.sessions.list;
 import android.content.Context;
 import android.os.Bundle;
 
-import at.devfest.app.R;
-import at.devfest.app.data.app.model.ScheduleSlot;
-import at.devfest.app.data.app.model.Session;
-import at.devfest.app.ui.BaseActivityPresenter;
-import at.devfest.app.utils.Strings;
-
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.FormatStyle;
 
 import java.util.List;
 import java.util.Locale;
+
+import at.devfest.app.R;
+import at.devfest.app.data.app.model.ScheduleSlot;
+import at.devfest.app.data.app.model.Session;
+import at.devfest.app.ui.BaseActivityPresenter;
+import at.devfest.app.utils.Strings;
 
 public class SessionsListPresenter extends BaseActivityPresenter<SessionsListMvp.View> {
 

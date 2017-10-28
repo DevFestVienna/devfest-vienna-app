@@ -3,11 +3,6 @@ package at.devfest.app.data.database;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import at.devfest.app.core.moshi.LocalDateTimeAdapter;
-import at.devfest.app.data.app.AppMapper;
-import at.devfest.app.data.app.model.Room;
-import at.devfest.app.data.database.model.Session;
-import at.devfest.app.data.database.model.Speaker;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
@@ -21,6 +16,11 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import at.devfest.app.core.moshi.LocalDateTimeAdapter;
+import at.devfest.app.data.app.AppMapper;
+import at.devfest.app.data.app.model.Room;
+import at.devfest.app.data.database.model.Session;
+import at.devfest.app.data.database.model.Speaker;
 import java8.util.stream.Collectors;
 import timber.log.Timber;
 
@@ -42,7 +42,7 @@ public class DbMapper {
     public List<at.devfest.app.data.app.model.Session> toAppSessions(@NonNull List<Session> from, @NonNull Map<Integer, at.devfest.app.data.app.model.Speaker> speakersMap) {
         return stream(from).map(session -> {
             LocalDateTime fromTime = localDateTimeAdapter.fromText(session.startAt);
-            return new at.devfest.app.data.app.model.Session(session.id, Room.getFromId(session.roomId).label,
+            return new at.devfest.app.data.app.model.Session(session.id, Room.getFromId(session.roomId).getLabel(),
                     appMapper.toSpeakersList(deserialize(session.speakersIds), speakersMap),
                     session.title, session.description, fromTime, fromTime.plusMinutes(session.duration),
                     session.photo);
@@ -56,7 +56,7 @@ public class DbMapper {
 
         return new Session(from.getId(), localDateTimeAdapter.toText(from.getFromTime()),
                 (int) ChronoUnit.MINUTES.between(from.getFromTime(), from.getToTime()),
-                Room.getFromLabel(from.getRoom()).id,
+                Room.getFromLabel(from.getRoom()).getId(),
                 serialize(appMapper.toSpeakersIds(from.getSpeakers())), from.getTitle(), from.getDescription(),
                 from.getPhoto());
     }

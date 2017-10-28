@@ -2,10 +2,9 @@ package at.devfest.app.core.dagger.module;
 
 import android.app.Application;
 
-import at.devfest.app.DevFestApp;
-
 import javax.inject.Singleton;
 
+import at.devfest.app.DevFestApp;
 import dagger.Module;
 import dagger.Provides;
 
@@ -18,7 +17,9 @@ public final class AppModule {
         this.app = app;
     }
 
-    @Provides @Singleton Application provideApplication() {
+    @Provides
+    @Singleton
+    Application provideApplication() {
         return app;
     }
 }

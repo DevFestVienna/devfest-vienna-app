@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import at.devfest.app.utils.Database;
-
 import rx.functions.Func1;
 
 public class Session {
@@ -19,16 +18,6 @@ public class Session {
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
     public static final String PHOTO = "photo";
-
-    public final int id;
-    public final String startAt;
-    public final int duration;
-    public final int roomId;
-    public final String speakersIds;
-    public final String title;
-    public final String description;
-    public final String photo;
-
     public static final Func1<Cursor, Session> MAPPER = cursor -> {
         int id = Database.getInt(cursor, ID);
         String startAt = Database.getString(cursor, START_AT);
@@ -40,6 +29,14 @@ public class Session {
         String photo = Database.getString(cursor, PHOTO);
         return new Session(id, startAt, duration, roomId, speakersIds, title, description, photo);
     };
+    public final int id;
+    public final String startAt;
+    public final int duration;
+    public final int roomId;
+    public final String speakersIds;
+    public final String title;
+    public final String description;
+    public final String photo;
 
     public Session(int id, String startAt, int duration, int roomId, String speakersIds, String title, String description, String photo) {
         this.id = id;

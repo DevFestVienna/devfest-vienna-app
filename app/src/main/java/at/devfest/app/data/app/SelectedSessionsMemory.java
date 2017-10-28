@@ -1,7 +1,5 @@
 package at.devfest.app.data.app;
 
-import at.devfest.app.data.app.model.Session;
-
 import org.threeten.bp.LocalDateTime;
 
 import java.util.Map;
@@ -9,6 +7,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import at.devfest.app.data.app.model.Session;
 
 @Singleton
 public class SelectedSessionsMemory {

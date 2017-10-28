@@ -19,6 +19,8 @@
 -printmapping mappings.txt
 -keepattributes SourceFile,LineNumberTable,InnerClasses,EnclosingMethod
 -dontwarn javax.annotation.**
+-keep class org.threeten.bp.**
+-keepclassmembers class org.threeten.bp.** { *; }
 
 # Keep the BuildConfig
 -keep class at.devfest.app.BuildConfig { *; }

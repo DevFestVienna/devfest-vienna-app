@@ -25,30 +25,30 @@ import java8.util.stream.StreamSupport;
 
 public class ScheduleDayEntry extends BaseViewHolder {
 
-    public interface OnSessionClickListener {
-        void onFreeSlotClicked(ScheduleSlot slot);
-
-        void onSelectedSessionClicked(Session session);
-    }
-
-    @BindView(R.id.schedule_day_entry_time) TextView time;
-
-    @BindView(R.id.schedule_day_entry_break_card) CardView breakCard;
-    @BindView(R.id.schedule_day_entry_break_text) TextView breakText;
-    @BindView(R.id.schedule_day_entry_break_time) TextView breakTime;
-
-    @BindView(R.id.schedule_day_entry_browse_card) CardView browseCard;
-
-    @BindView(R.id.schedule_day_entry_session_card) CardView sessionCard;
-    @BindView(R.id.schedule_day_entry_session_title) TextView sessionTitle;
-    @BindView(R.id.schedule_day_entry_session_time) TextView sessionTime;
-    @BindView(R.id.schedule_day_entry_session_room) TextView sessionRoom;
-    @BindView(R.id.schedule_day_entry_session_selected_state) ImageView sessionSelectedState;
-    @BindView(R.id.schedule_day_entry_slot_speakers) ViewGroup sessionSpeakers;
-
     private final Picasso picasso;
     private final OnSessionClickListener listener;
-
+    @BindView(R.id.schedule_day_entry_time)
+    TextView time;
+    @BindView(R.id.schedule_day_entry_break_card)
+    CardView breakCard;
+    @BindView(R.id.schedule_day_entry_break_text)
+    TextView breakText;
+    @BindView(R.id.schedule_day_entry_break_time)
+    TextView breakTime;
+    @BindView(R.id.schedule_day_entry_browse_card)
+    CardView browseCard;
+    @BindView(R.id.schedule_day_entry_session_card)
+    CardView sessionCard;
+    @BindView(R.id.schedule_day_entry_session_title)
+    TextView sessionTitle;
+    @BindView(R.id.schedule_day_entry_session_time)
+    TextView sessionTime;
+    @BindView(R.id.schedule_day_entry_session_room)
+    TextView sessionRoom;
+    @BindView(R.id.schedule_day_entry_session_selected_state)
+    ImageView sessionSelectedState;
+    @BindView(R.id.schedule_day_entry_slot_speakers)
+    ViewGroup sessionSpeakers;
     public ScheduleDayEntry(ViewGroup parent, Picasso picasso, OnSessionClickListener listener) {
         super(parent, R.layout.schedule_day_entry);
         this.picasso = picasso;
@@ -134,5 +134,11 @@ public class ScheduleDayEntry extends BaseViewHolder {
                     .map(speaker -> new ScheduleDayEntrySpeaker(sessionSpeakers.getContext(), speaker, picasso))
                     .forEach(sessionSpeakers::addView);
         }
+    }
+
+    public interface OnSessionClickListener {
+        void onFreeSlotClicked(ScheduleSlot slot);
+
+        void onSelectedSessionClicked(Session session);
     }
 }

@@ -30,8 +30,10 @@ import timber.log.Timber;
 @IntentBuilder
 public class ReminderReceiver extends BroadcastReceiver {
 
-    @Extra Integer sessionId;
-    @Inject SessionsDao sessionsDao;
+    @Extra
+    Integer sessionId;
+    @Inject
+    SessionsDao sessionsDao;
 
     @Override
     public void onReceive(Context context, Intent intent) {

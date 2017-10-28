@@ -23,22 +23,30 @@ import dagger.Provides;
 @Module
 public final class UtilsModule {
 
-    @Provides @Singleton Configuration provideConfiguration() {
+    @Provides
+    @Singleton
+    Configuration provideConfiguration() {
         return new FirebaseConfiguration(
                 FirebaseRemoteConfig.getInstance());
     }
 
-    @Provides @Singleton Analytics provideAnalytics(Application context) {
+    @Provides
+    @Singleton
+    Analytics provideAnalytics(Application context) {
         return new FirebaseAnalyticsWrapper(
                 FirebaseAnalytics.getInstance(context)
         );
     }
 
-    @Provides @Singleton DatabaseReference provideDatabaseReference() {
+    @Provides
+    @Singleton
+    DatabaseReference provideDatabaseReference() {
         return FirebaseDatabase.getInstance().getReference();
     }
 
-    @Provides @Singleton FirebaseInstanceId provideFirebaseInstanceId() {
+    @Provides
+    @Singleton
+    FirebaseInstanceId provideFirebaseInstanceId() {
         return FirebaseInstanceId.getInstance();
     }
 }

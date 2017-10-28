@@ -6,18 +6,20 @@ import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
+import javax.inject.Inject;
+
 import at.devfest.app.DevFestApp;
 import at.devfest.app.R;
 import at.devfest.app.receiver.reminder.SessionsReminder;
 import at.devfest.app.utils.Analytics;
 import at.devfest.app.utils.Intents;
 
-import javax.inject.Inject;
-
 public class SettingsFragment extends PreferenceFragmentCompat implements SettingsMvp.View {
 
-    @Inject SessionsReminder sessionsReminder;
-    @Inject Analytics analytics;
+    @Inject
+    SessionsReminder sessionsReminder;
+    @Inject
+    Analytics analytics;
 
     private SettingsPresenter presenter;
     private CheckBoxPreference notifySessions;

@@ -28,12 +28,16 @@ import butterknife.BindView;
 @FragmentWithArgs
 public class SchedulePagerFragment extends BaseFragment<SchedulePagerPresenter> implements SchedulePagerMvp.View {
 
-    @Arg boolean allSessions;
+    @Arg
+    boolean allSessions;
 
-    @Inject DataProvider dataProvider;
+    @Inject
+    DataProvider dataProvider;
 
-    @BindView(R.id.schedule_loading) ProgressBar loading;
-    @BindView(R.id.schedule_viewpager) ViewPager viewPager;
+    @BindView(R.id.schedule_loading)
+    ProgressBar loading;
+    @BindView(R.id.schedule_viewpager)
+    ViewPager viewPager;
 
     private Snackbar errorSnackbar;
 
@@ -64,7 +68,7 @@ public class SchedulePagerFragment extends BaseFragment<SchedulePagerPresenter> 
     @Override
     public void displaySchedule(Schedule schedule) {
         viewPager.setAdapter(new SchedulePagerAdapter(getContext(), getChildFragmentManager(), schedule, allSessions));
-        if (schedule.size() > 1) {
+        if (schedule.getSize() > 1) {
             ((DrawerActivity) getActivity()).setupTabLayoutWithViewPager(viewPager);
             selectCurrentDay(schedule);
         }
@@ -84,7 +88,7 @@ public class SchedulePagerFragment extends BaseFragment<SchedulePagerPresenter> 
     private void selectCurrentDay(Schedule schedule) {
         int idx = 0;
         for (ScheduleDay day : schedule) {
-            if (day.getDay().equals(LocalDate.now())) {
+            if (day.isToday()) {
                 final int index = idx;
                 final ViewPager pager = viewPager;
                 if (pager != null) {

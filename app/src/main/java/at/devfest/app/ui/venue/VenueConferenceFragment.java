@@ -20,10 +20,10 @@ import butterknife.OnClick;
 
 public class VenueConferenceFragment extends BaseFragment {
 
-    @BindView(R.id.venue_conference_image) ImageView photo;
-
     private static final float PHOTO_RATIO = 0.406f;
     private static final String COORDINATES_URI = "geo:48.1965898,16.3680991?q=" + Uri.encode("Fakultät+für+Elektrotechnik+und+Informationstechnik");
+    @BindView(R.id.venue_conference_image)
+    ImageView photo;
 
     @Override
     protected BaseFragmentPresenter newPresenter() {

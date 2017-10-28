@@ -3,11 +3,12 @@ package at.devfest.app.ui.sessions.list;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import at.devfest.app.data.app.SelectedSessionsMemory;
-import at.devfest.app.data.app.model.Session;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import at.devfest.app.data.app.SelectedSessionsMemory;
+import at.devfest.app.data.app.model.Session;
 
 public class SessionsListAdapter extends RecyclerView.Adapter<SessionsListEntry> {
 

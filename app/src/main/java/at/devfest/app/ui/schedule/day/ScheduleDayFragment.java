@@ -10,6 +10,12 @@ import android.view.ViewGroup;
 
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
 import at.devfest.app.DevFestApp;
 import at.devfest.app.R;
 import at.devfest.app.data.app.SelectedSessionsMemory;
@@ -19,24 +25,23 @@ import at.devfest.app.data.app.model.Session;
 import at.devfest.app.ui.BaseFragment;
 import at.devfest.app.ui.sessions.details.SessionDetailsActivityIntentBuilder;
 import at.devfest.app.ui.sessions.list.SessionsListActivityIntentBuilder;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 
 @FragmentWithArgs
 public class ScheduleDayFragment extends BaseFragment<ScheduleDayPresenter> implements ScheduleDayMvp.View, ScheduleDayEntry.OnSessionClickListener {
 
-    @Arg boolean allSessions;
-    @Arg ScheduleDay scheduleDay;
+    @Arg
+    boolean allSessions;
+    @Arg
+    ScheduleDay scheduleDay;
 
-    @Inject Picasso picasso;
-    @Inject SelectedSessionsMemory selectedSessionsMemory;
+    @Inject
+    Picasso picasso;
+    @Inject
+    SelectedSessionsMemory selectedSessionsMemory;
 
-    @BindView(R.id.schedule_day_recyclerview) RecyclerView recyclerView;
+    @BindView(R.id.schedule_day_recyclerview)
+    RecyclerView recyclerView;
 
     private RecyclerView.Adapter<ScheduleDayEntry> adapter;
 

@@ -3,13 +3,6 @@ package at.devfest.app.data.app;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import at.devfest.app.data.app.model.Room;
-import at.devfest.app.data.app.model.Schedule;
-import at.devfest.app.data.app.model.ScheduleDay;
-import at.devfest.app.data.app.model.ScheduleSlot;
-import at.devfest.app.data.app.model.Session;
-import at.devfest.app.data.app.model.Speaker;
-
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalDateTime;
 
@@ -20,6 +13,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import at.devfest.app.data.app.model.Room;
+import at.devfest.app.data.app.model.Schedule;
+import at.devfest.app.data.app.model.ScheduleDay;
+import at.devfest.app.data.app.model.ScheduleSlot;
+import at.devfest.app.data.app.model.Session;
+import at.devfest.app.data.app.model.Speaker;
 import java8.util.stream.Collectors;
 
 import static java8.util.stream.StreamSupport.stream;
@@ -122,7 +121,7 @@ public class AppMapper {
     }
 
     private List<Session> sortPerRoomId(@NonNull List<Session> list) {
-        Collections.sort(list, (lhs, rhs) -> Room.getFromLabel(lhs.getRoom()).id - Room.getFromLabel(rhs.getRoom()).id);
+        Collections.sort(list, (lhs, rhs) -> Room.getFromLabel(lhs.getRoom()).getId() - Room.getFromLabel(rhs.getRoom()).getId());
         return list;
     }
 }

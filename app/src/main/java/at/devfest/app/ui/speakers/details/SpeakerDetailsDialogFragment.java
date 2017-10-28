@@ -15,40 +15,50 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import javax.inject.Inject;
+
 import at.devfest.app.DevFestApp;
 import at.devfest.app.R;
 import at.devfest.app.data.app.model.Speaker;
 import at.devfest.app.ui.core.picasso.CircleTransformation;
 import at.devfest.app.utils.Analytics;
 import at.devfest.app.utils.Intents;
-import com.squareup.picasso.Picasso;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class SpeakerDetailsDialogFragment extends AppCompatDialogFragment {
 
-    @Inject Picasso picasso;
-    @Inject Analytics analytics;
-
-    @BindView(R.id.speaker_details_name) TextView name;
-    @BindView(R.id.speaker_details_title) TextView title;
-    @BindView(R.id.speaker_details_bio) TextView bio;
-    @BindView(R.id.speaker_details_photo) ImageView photo;
-    @BindView(R.id.speaker_details_links_container) ViewGroup linksContainer;
-    @BindView(R.id.speaker_details_twitter) ImageView twitter;
-    @BindView(R.id.speaker_details_github) ImageView github;
-    @BindView(R.id.speaker_details_gplus) ImageView gplus;
-    @BindView(R.id.speaker_details_xing) ImageView xing;
-    @BindView(R.id.speaker_details_linkedin) ImageView linkedin;
-    @BindView(R.id.speaker_details_website) ImageView website;
-
-    private Unbinder unbinder;
-
     private static final String EXTRA_SPEAKER = "speaker";
+    @Inject
+    Picasso picasso;
+    @Inject
+    Analytics analytics;
+    @BindView(R.id.speaker_details_name)
+    TextView name;
+    @BindView(R.id.speaker_details_title)
+    TextView title;
+    @BindView(R.id.speaker_details_bio)
+    TextView bio;
+    @BindView(R.id.speaker_details_photo)
+    ImageView photo;
+    @BindView(R.id.speaker_details_links_container)
+    ViewGroup linksContainer;
+    @BindView(R.id.speaker_details_twitter)
+    ImageView twitter;
+    @BindView(R.id.speaker_details_github)
+    ImageView github;
+    @BindView(R.id.speaker_details_gplus)
+    ImageView gplus;
+    @BindView(R.id.speaker_details_xing)
+    ImageView xing;
+    @BindView(R.id.speaker_details_linkedin)
+    ImageView linkedin;
+    @BindView(R.id.speaker_details_website)
+    ImageView website;
+    private Unbinder unbinder;
 
     public static void show(@NonNull Speaker speaker, @NonNull FragmentManager fm) {
         Bundle args = new Bundle();

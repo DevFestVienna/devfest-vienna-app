@@ -19,7 +19,8 @@ import butterknife.BindView;
 
 public class VenuePagerFragment extends BaseFragment {
 
-    @BindView(R.id.venue_viewpager) ViewPager viewPager;
+    @BindView(R.id.venue_viewpager)
+    ViewPager viewPager;
 
     @Override
     protected BaseFragmentPresenter newPresenter() {

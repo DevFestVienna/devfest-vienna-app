@@ -37,19 +37,22 @@ import timber.log.Timber;
 
 public class SessionFeedbackDialogFragment extends AppCompatDialogFragment {
 
-    @Inject Analytics analytics;
-    @Inject FirebaseInstanceId instanceId;
-    @Inject DatabaseReference dbRef;
-
-    @BindView(R.id.session_feedback_title) TextView title;
-    @BindView(R.id.session_feedback_talk) RatingBar ratingTalk;
-    @BindView(R.id.session_feedback_speaker) RatingBar ratingSpeaker;
-    @BindView(R.id.session_feedback_content) RatingBar ratingContent;
-
-    private Unbinder unbinder;
-
     private static final String EXTRA_SESSION = "session";
-
+    @Inject
+    Analytics analytics;
+    @Inject
+    FirebaseInstanceId instanceId;
+    @Inject
+    DatabaseReference dbRef;
+    @BindView(R.id.session_feedback_title)
+    TextView title;
+    @BindView(R.id.session_feedback_talk)
+    RatingBar ratingTalk;
+    @BindView(R.id.session_feedback_speaker)
+    RatingBar ratingSpeaker;
+    @BindView(R.id.session_feedback_content)
+    RatingBar ratingContent;
+    private Unbinder unbinder;
     private Session session;
 
     public static void show(@NonNull Session session, @NonNull FragmentManager fm) {
@@ -115,19 +118,20 @@ public class SessionFeedbackDialogFragment extends AppCompatDialogFragment {
                 .child(id)
                 .child(String.valueOf(session.getId()))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                SessionFeedback feedback = dataSnapshot.getValue(SessionFeedback.class);
-                if (feedback != null) {
-                    // write the values into the form
-                    ratingTalk.setRating(feedback.getSessionRating());
-                    ratingSpeaker.setRating(feedback.getSpeakerRating());
-                    ratingContent.setRating(feedback.getContentLevel());
-                }
-            }
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        SessionFeedback feedback = dataSnapshot.getValue(SessionFeedback.class);
+                        if (feedback != null) {
+                            // write the values into the form
+                            ratingTalk.setRating(feedback.getSessionRating());
+                            ratingSpeaker.setRating(feedback.getSpeakerRating());
+                            ratingContent.setRating(feedback.getContentLevel());
+                        }
+                    }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
     }
 }

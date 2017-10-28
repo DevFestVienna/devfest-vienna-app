@@ -9,6 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
 import at.devfest.app.DevFestApp;
 import at.devfest.app.R;
 import at.devfest.app.data.app.DataProvider;
@@ -16,21 +22,19 @@ import at.devfest.app.data.app.model.Speaker;
 import at.devfest.app.ui.BaseFragment;
 import at.devfest.app.ui.core.recyclerview.MarginDecoration;
 import at.devfest.app.ui.speakers.details.SpeakerDetailsDialogFragment;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 
 public class SpeakersListFragment extends BaseFragment<SpeakersListPresenter> implements SpeakersListMvp.View {
 
-    @Inject Picasso picasso;
-    @Inject DataProvider dataProvider;
+    @Inject
+    Picasso picasso;
+    @Inject
+    DataProvider dataProvider;
 
-    @BindView(R.id.speakers_list_loading) ProgressBar loading;
-    @BindView(R.id.speakers_list_recyclerview) RecyclerView recyclerView;
+    @BindView(R.id.speakers_list_loading)
+    ProgressBar loading;
+    @BindView(R.id.speakers_list_recyclerview)
+    RecyclerView recyclerView;
 
     private Snackbar errorSnackbar;
     private SpeakersListAdapter adapter;

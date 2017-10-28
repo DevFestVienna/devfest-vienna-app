@@ -11,7 +11,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.LocalTime;
 import org.threeten.bp.ZoneId;
 
 import java.util.List;
@@ -35,6 +34,10 @@ import timber.log.Timber;
  */
 
 public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implements HomeMvp.Presenter {
+    @State
+    Schedule schedule;
+    @State
+    NewsEntry newsEntry;
     private DatabaseReference dbRef;
     private Analytics analytics;
     private DataProvider dataProvider;
@@ -44,9 +47,6 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
     private boolean isDisplayed = false;
     private boolean firebaseLoaded = false;
     private boolean sessionsLoaded = false;
-
-    @State Schedule schedule;
-    @State NewsEntry newsEntry;
 
     public HomePresenter(HomeMvp.View view, DatabaseReference dbRef, Analytics analytics, DataProvider dataProvider) {
         super(view);
@@ -100,7 +100,11 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(scheduleDays -> schedule = scheduleDays,
-                        throwable -> {sessionsLoaded = true; setVisibility(); Timber.e(throwable, "Error getting schedule");},
+                        throwable -> {
+                            sessionsLoaded = true;
+                            setVisibility();
+                            Timber.e(throwable, "Error getting schedule");
+                        },
                         () -> {
                             if (schedule == null) {
                                 // view.displayLoadingError();
@@ -115,8 +119,7 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
     private void loadNewsEntry() {
         if (newsEntry != null && newsEntry.getTitle() != null && newsEntry.getText() != null) {
             view.updateAnnouncement(newsEntry.getTitle(), newsEntry.getText());
-        }
-        else {
+        } else {
             view.hideAnnouncement();
         }
         firebaseLoaded = true;
@@ -133,16 +136,16 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
         List<ScheduleSlot> slots;
         ScheduleSlot currentSlot = null;
         ScheduleSlot nextSlot = null;
-        int cnt = schedule.size();
+        int cnt = schedule.getSize();
         int i;
-        for (i=0; i<cnt; i++) {
+        for (i = 0; i < cnt; i++) {
             day = schedule.get(i);
-            if (today.compareTo(day.getDay()) < 0) {
+            if (today.compareTo(day.getDate()) < 0) {
                 isBefore = true;
             }
-            if (today.isEqual(day.getDay())) {
+            if (today.isEqual(day.getDate())) {
                 todayScheduleDay = day;
-                isLastDay = (i == cnt -1);
+                isLastDay = (i == cnt - 1);
                 break;
             }
         }
@@ -150,16 +153,14 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
             if (isBefore) {
                 // days before the conference
                 view.setComingNext(R.string.home_conference_before_title, R.string.home_conference_before);
-            }
-            else {
+            } else {
                 // days after the conference
                 view.setComingNext(R.string.home_conference_after_title, R.string.home_conference_after);
             }
-        }
-        else {
+        } else {
             slots = todayScheduleDay.getSlots();
             cnt = slots.size();
-            for (i = 0; i<cnt; i++) {
+            for (i = 0; i < cnt; i++) {
                 ScheduleSlot slot = slots.get(i);
                 if (now.compareTo(slot.getTime()) < 0) {
                     nextSlot = slot;
@@ -170,25 +171,21 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
             if (nextSlot == null) {
                 // at or after the last slot
                 if (isLastDay) {
-                    // last day, nothing coming
+                    // last date, nothing coming
                     view.setComingNext(R.string.home_conference_last_day_title, R.string.home_conference_last_day);
-                }
-                else {
+                } else {
                     // tomorrow is another session
                     view.setComingNext(R.string.home_conference_next_day_title, R.string.home_conference_next_day);
                 }
-            }
-            else if (currentSlot == null) {
-                // no currentSlot: conf day did not start yet
+            } else if (currentSlot == null) {
+                // no currentSlot: conf date did not start yet
                 view.setComingNext(R.string.home_session_next_title, nextSlot.getSessions());
-            }
-            else {
+            } else {
                 LocalDateTime nextStart = nextSlot.getTime();
                 if (now.plusMinutes(10).compareTo(nextStart) > 0) {
                     // starting soon
                     view.setComingNext(R.string.home_session_next_title, nextSlot.getSessions());
-                }
-                else {
+                } else {
                     // starting in more than 15 minutes
                     view.setComingNext(R.string.home_session_current_title, currentSlot.getSessions());
                 }
@@ -202,6 +199,7 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
         }
         view.setIsLoading(!isDisplayed);
     }
+
     @Override
     public void onStop() {
         super.onStop();

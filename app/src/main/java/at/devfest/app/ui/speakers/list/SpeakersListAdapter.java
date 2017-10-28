@@ -3,11 +3,12 @@ package at.devfest.app.ui.speakers.list;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import at.devfest.app.data.app.model.Speaker;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import at.devfest.app.data.app.model.Speaker;
 
 public class SpeakersListAdapter extends RecyclerView.Adapter<SpeakersListEntry> {
 

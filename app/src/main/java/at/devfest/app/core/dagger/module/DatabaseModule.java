@@ -3,12 +3,12 @@ package at.devfest.app.core.dagger.module;
 import android.app.Application;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import at.devfest.app.data.database.DbOpenHelper;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
 
 import javax.inject.Singleton;
 
+import at.devfest.app.data.database.DbOpenHelper;
 import dagger.Module;
 import dagger.Provides;
 import rx.schedulers.Schedulers;
@@ -19,15 +19,21 @@ public class DatabaseModule {
 
     private static final String TAG = "database";
 
-    @Provides @Singleton SQLiteOpenHelper provideSQLiteOpenHelper(Application application) {
+    @Provides
+    @Singleton
+    SQLiteOpenHelper provideSQLiteOpenHelper(Application application) {
         return new DbOpenHelper(application);
     }
 
-    @Provides @Singleton SqlBrite provideSqlBrite() {
+    @Provides
+    @Singleton
+    SqlBrite provideSqlBrite() {
         return SqlBrite.create(Timber.tag(TAG)::v);
     }
 
-    @Provides @Singleton BriteDatabase provideBriteDatabase(SqlBrite sqlBrite, SQLiteOpenHelper helper) {
+    @Provides
+    @Singleton
+    BriteDatabase provideBriteDatabase(SqlBrite sqlBrite, SQLiteOpenHelper helper) {
         return sqlBrite.wrapDatabaseHelper(helper, Schedulers.immediate());
     }
 }

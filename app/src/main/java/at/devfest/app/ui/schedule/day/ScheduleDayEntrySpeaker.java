@@ -8,18 +8,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import at.devfest.app.R;
 import at.devfest.app.data.app.model.Speaker;
 import at.devfest.app.ui.core.picasso.CircleTransformation;
-import com.squareup.picasso.Picasso;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ScheduleDayEntrySpeaker extends LinearLayout {
 
-    @BindView(R.id.schedule_day_entry_speaker_photo) ImageView photo;
-    @BindView(R.id.schedule_day_entry_speaker_name) TextView name;
+    @BindView(R.id.schedule_day_entry_speaker_photo)
+    ImageView photo;
+    @BindView(R.id.schedule_day_entry_speaker_name)
+    TextView name;
 
     public ScheduleDayEntrySpeaker(Context context, Speaker speaker, Picasso picasso) {
         super(context);

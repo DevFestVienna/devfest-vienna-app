@@ -25,13 +25,19 @@ import butterknife.BindView;
 
 public class DrawerActivity extends BaseActivity<DrawerPresenter> implements DrawerMvp.View {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tab_layout) TabLayout tabLayout;
-    @BindView(R.id.drawer_layout) DrawerLayout drawer;
-    @BindView(R.id.drawer_navigation) NavigationView navigationView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.drawer_navigation)
+    NavigationView navigationView;
 
-    @Inject Configuration config;
-    @Inject Analytics analytics;
+    @Inject
+    Configuration config;
+    @Inject
+    Analytics analytics;
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
 

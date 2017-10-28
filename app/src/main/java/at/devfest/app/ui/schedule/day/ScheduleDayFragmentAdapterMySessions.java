@@ -3,15 +3,16 @@ package at.devfest.app.ui.schedule.day;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import at.devfest.app.data.app.SelectedSessionsMemory;
-import at.devfest.app.data.app.model.Room;
-import at.devfest.app.data.app.model.ScheduleSlot;
-import at.devfest.app.data.app.model.Session;
 import com.squareup.picasso.Picasso;
 
 import org.threeten.bp.LocalDateTime;
 
 import java.util.List;
+
+import at.devfest.app.data.app.SelectedSessionsMemory;
+import at.devfest.app.data.app.model.Room;
+import at.devfest.app.data.app.model.ScheduleSlot;
+import at.devfest.app.data.app.model.Session;
 
 import static java8.util.stream.StreamSupport.stream;
 
@@ -45,7 +46,7 @@ public class ScheduleDayFragmentAdapterMySessions extends RecyclerView.Adapter<S
                 holder.bindFreeSlot(slot);
             } else {
                 Session session = slotSessions.get(0);
-                if (session.getRoom().equals(Room.NONE.label)) {
+                if (session.getRoom().equals(Room.NONE.getLabel())) {
                     holder.bindBreakSlot(slot, session, true);
                 } else {
                     // holder.bindSelectedSession(slot, session, true, selectedSessionsMemory.isSelected(session));

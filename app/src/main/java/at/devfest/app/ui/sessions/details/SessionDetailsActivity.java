@@ -14,6 +14,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.FormatStyle;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
 import at.devfest.app.DevFestApp;
 import at.devfest.app.R;
 import at.devfest.app.data.app.model.Session;
@@ -27,18 +36,6 @@ import at.devfest.app.utils.Animations;
 import at.devfest.app.utils.App;
 import at.devfest.app.utils.Strings;
 import at.devfest.app.utils.Views;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.squareup.picasso.Picasso;
-
-import org.threeten.bp.format.DateTimeFormatter;
-import org.threeten.bp.format.FormatStyle;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import se.emilsjolander.intentbuilder.Extra;
 import se.emilsjolander.intentbuilder.IntentBuilder;
@@ -46,26 +43,44 @@ import se.emilsjolander.intentbuilder.IntentBuilder;
 @IntentBuilder
 public class SessionDetailsActivity extends BaseActivity<SessionDetailsPresenter> implements SessionDetailsMvp.View {
 
-    @Extra Session session;
+    @Extra
+    Session session;
 
-    @Inject Picasso picasso;
-    @Inject SessionsDao sessionsDao;
-    @Inject SessionsReminder sessionsReminder;
-    @Inject Analytics analytics;
+    @Inject
+    Picasso picasso;
+    @Inject
+    SessionsDao sessionsDao;
+    @Inject
+    SessionsReminder sessionsReminder;
+    @Inject
+    Analytics analytics;
 
-    @BindView(R.id.session_details_layout) View layout;
-    @BindView(R.id.session_details_toolbar) Toolbar toolbar;
-    @BindView(R.id.session_details_toolbar_layout) CollapsingToolbarLayout toolbarLayout;
-    @BindView(R.id.session_details_photo) ImageView photo;
-    @BindView(R.id.session_details_header) ViewGroup header;
-    @BindView(R.id.session_details_title) TextView title;
-    @BindView(R.id.session_details_info) TextView talkInfo;
-    @BindView(R.id.session_details_description_header) View descriptionHeader;
-    @BindView(R.id.session_details_description) TextView description;
-    @BindView(R.id.session_details_speakers_title) TextView speakersTitle;
-    @BindView(R.id.session_details_speakers_container) ViewGroup speakersContainer;
-    @BindView(R.id.session_details_fab) FloatingActionButton fab;
-    @BindView(R.id.session_details_feedback) Button feedback;
+    @BindView(R.id.session_details_layout)
+    View layout;
+    @BindView(R.id.session_details_toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.session_details_toolbar_layout)
+    CollapsingToolbarLayout toolbarLayout;
+    @BindView(R.id.session_details_photo)
+    ImageView photo;
+    @BindView(R.id.session_details_header)
+    ViewGroup header;
+    @BindView(R.id.session_details_title)
+    TextView title;
+    @BindView(R.id.session_details_info)
+    TextView talkInfo;
+    @BindView(R.id.session_details_description_header)
+    View descriptionHeader;
+    @BindView(R.id.session_details_description)
+    TextView description;
+    @BindView(R.id.session_details_speakers_title)
+    TextView speakersTitle;
+    @BindView(R.id.session_details_speakers_container)
+    ViewGroup speakersContainer;
+    @BindView(R.id.session_details_fab)
+    FloatingActionButton fab;
+    @BindView(R.id.session_details_feedback)
+    Button feedback;
 
     @Override
     protected SessionDetailsPresenter newPresenter() {

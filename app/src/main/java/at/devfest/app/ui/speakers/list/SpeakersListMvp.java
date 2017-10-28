@@ -1,8 +1,8 @@
 package at.devfest.app.ui.speakers.list;
 
-import at.devfest.app.data.app.model.Speaker;
-
 import java.util.List;
+
+import at.devfest.app.data.app.model.Speaker;
 
 public interface SpeakersListMvp {
 

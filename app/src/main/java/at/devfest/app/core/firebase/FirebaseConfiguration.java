@@ -7,7 +7,7 @@ import at.devfest.app.utils.Configuration;
 
 /**
  * Created by helmuth on 19/08/16.
- *
+ * <p>
  * This class implements a Configuration using Firebase Remote Config.
  */
 

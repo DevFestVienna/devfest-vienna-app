@@ -6,14 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import javax.inject.Inject;
+
 import at.devfest.app.DevFestApp;
 import at.devfest.app.receiver.reminder.SessionsReminder;
 
-import javax.inject.Inject;
-
 public class BootReceiver extends BroadcastReceiver {
 
-    @Inject SessionsReminder sessionsReminder;
+    @Inject
+    SessionsReminder sessionsReminder;
 
     public BootReceiver() {
     }

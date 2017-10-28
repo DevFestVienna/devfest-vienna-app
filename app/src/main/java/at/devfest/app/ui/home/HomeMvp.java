@@ -22,6 +22,7 @@ public interface HomeMvp {
 
         void setIsLoading(boolean isLoading);
     }
+
     interface Presenter {
 
     }

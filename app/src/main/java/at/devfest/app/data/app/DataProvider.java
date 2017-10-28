@@ -1,5 +1,10 @@
 package at.devfest.app.data.app;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import at.devfest.app.data.app.model.Schedule;
 import at.devfest.app.data.app.model.Session;
 import at.devfest.app.data.app.model.Speaker;
@@ -7,12 +12,6 @@ import at.devfest.app.data.database.dao.SessionsDao;
 import at.devfest.app.data.database.dao.SpeakersDao;
 import at.devfest.app.data.network.DevFestService;
 import at.devfest.app.data.network.NetworkMapper;
-
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import rx.Observable;
 import rx.Subscriber;
 import timber.log.Timber;

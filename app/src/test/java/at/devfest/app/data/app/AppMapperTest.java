@@ -90,7 +90,7 @@ public class AppMapperTest {
 
         // Then
         assertThat(result).hasSize(2);
-        assertThat(result.get(0).getDay()).isEqualTo(slot1.toLocalDate());
+        assertThat(result.get(0).getDate()).isEqualTo(slot1.toLocalDate());
         assertThat(result.get(0).getSlots()).hasSize(3);
         assertThat(result.get(0).getSlots().get(0).getSessions()).containsAllOf(session1, session2);
         assertThat(result.get(0).getSlots().get(0).getTime()).isEqualTo(slot1);

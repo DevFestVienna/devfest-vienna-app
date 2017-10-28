@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import at.devfest.app.utils.Database;
-
 import rx.functions.Func1;
 
 public class SelectedSession {

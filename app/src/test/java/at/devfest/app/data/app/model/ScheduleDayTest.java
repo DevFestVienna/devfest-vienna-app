@@ -34,7 +34,7 @@ public class ScheduleDayTest {
         ScheduleDay fromParcel = ScheduleDay.CREATOR.createFromParcel(parcel);
 
         // Then
-        assertThat(fromParcel.getDay()).isEqualTo(day);
+        assertThat(fromParcel.getDate()).isEqualTo(day);
         assertThat(fromParcel.getSlots()).hasSize(1);
     }
 }

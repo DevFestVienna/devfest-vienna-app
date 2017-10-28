@@ -8,17 +8,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
-import at.devfest.app.R;
-import at.devfest.app.data.app.model.Session;
-import at.devfest.app.data.database.dao.SessionsDao;
-import at.devfest.app.utils.App;
-
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.ZoneOffset;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import at.devfest.app.R;
+import at.devfest.app.data.app.model.Session;
+import at.devfest.app.data.database.dao.SessionsDao;
+import at.devfest.app.utils.App;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;

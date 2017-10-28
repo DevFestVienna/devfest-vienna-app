@@ -1,9 +1,5 @@
 package at.devfest.app.data.database.dao;
 
-import at.devfest.app.data.app.AppMapper;
-import at.devfest.app.data.database.DbMapper;
-import at.devfest.app.data.database.model.Speaker;
-import at.devfest.app.utils.Preconditions;
 import com.squareup.sqlbrite.BriteDatabase;
 
 import java.util.List;
@@ -12,6 +8,10 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import at.devfest.app.data.app.AppMapper;
+import at.devfest.app.data.database.DbMapper;
+import at.devfest.app.data.database.model.Speaker;
+import at.devfest.app.utils.Preconditions;
 import rx.Observable;
 
 @Singleton

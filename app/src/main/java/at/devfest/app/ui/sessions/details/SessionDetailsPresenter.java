@@ -2,22 +2,14 @@ package at.devfest.app.ui.sessions.details;
 
 import android.os.Bundle;
 
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.iid.FirebaseInstanceId;
-
-import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.LocalTime;
 import org.threeten.bp.ZoneId;
 
 import at.devfest.app.R;
 import at.devfest.app.data.app.model.Session;
-import at.devfest.app.data.app.model.SessionFeedback;
 import at.devfest.app.data.database.dao.SessionsDao;
 import at.devfest.app.receiver.reminder.SessionsReminder;
 import at.devfest.app.ui.BaseActivityPresenter;
-
 import at.devfest.app.utils.Analytics;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

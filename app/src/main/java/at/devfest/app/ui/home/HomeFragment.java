@@ -3,10 +3,8 @@ package at.devfest.app.ui.home;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -30,7 +28,6 @@ import at.devfest.app.data.app.model.Session;
 import at.devfest.app.ui.BaseFragment;
 import at.devfest.app.ui.drawer.DrawerActivity;
 import at.devfest.app.ui.sessions.details.SessionDetailsActivityIntentBuilder;
-import at.devfest.app.ui.sessions.list.SessionsListAdapter;
 import at.devfest.app.ui.sessions.list.SessionsListMvp;
 import at.devfest.app.utils.Analytics;
 import at.devfest.app.utils.Intents;
@@ -42,27 +39,48 @@ import butterknife.BindView;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp.View, SessionsListMvp.SessionDetailsHandler {
 
-    @BindView(R.id.home_news_card) View newsCard;
-    @BindView(R.id.home_news_title) TextView newsTitle;
-    @BindView(R.id.home_news_text) TextView newsText;
-    @BindView(R.id.home_current_title) TextView currentTitle;
-    @BindView(R.id.home_current_text) TextView currentText;
-    @BindView(R.id.home_current_recyclerview) RecyclerView currentRecyclerView;
-    @BindView(R.id.home_content) View content;
-    @BindView(R.id.home_loading) View loading;
-    @BindView(R.id.home_sponsor_willhaben) View willhaben;
-    @BindView(R.id.home_sponsor_erste) View erste;
-    @BindView(R.id.home_sponsor_pavelka) View pavelka;
-    @BindView(R.id.home_sponsor_openforce) View openforce;
-    @BindView(R.id.home_sponsor_easyname) View easyname;
-    @BindView(R.id.home_buttons) View agenda_buttons;
-    @BindView(R.id.home_button_agenda_mine) View agenda_mine;
-    @BindView(R.id.home_button_agenda_full) View agenda_full;
-    @Inject Analytics analytics;
-    @Inject DatabaseReference dbRef;
-    @Inject DataProvider dataProvider;
-    @Inject Picasso picasso;
-    @Inject SelectedSessionsMemory selectedSessionsMemory;
+    @BindView(R.id.home_news_card)
+    View newsCard;
+    @BindView(R.id.home_news_title)
+    TextView newsTitle;
+    @BindView(R.id.home_news_text)
+    TextView newsText;
+    @BindView(R.id.home_current_title)
+    TextView currentTitle;
+    @BindView(R.id.home_current_text)
+    TextView currentText;
+    @BindView(R.id.home_current_recyclerview)
+    RecyclerView currentRecyclerView;
+    @BindView(R.id.home_content)
+    View content;
+    @BindView(R.id.home_loading)
+    View loading;
+    @BindView(R.id.home_sponsor_willhaben)
+    View willhaben;
+    @BindView(R.id.home_sponsor_erste)
+    View erste;
+    @BindView(R.id.home_sponsor_pavelka)
+    View pavelka;
+    @BindView(R.id.home_sponsor_openforce)
+    View openforce;
+    @BindView(R.id.home_sponsor_easyname)
+    View easyname;
+    @BindView(R.id.home_buttons)
+    View agenda_buttons;
+    @BindView(R.id.home_button_agenda_mine)
+    View agenda_mine;
+    @BindView(R.id.home_button_agenda_full)
+    View agenda_full;
+    @Inject
+    Analytics analytics;
+    @Inject
+    DatabaseReference dbRef;
+    @Inject
+    DataProvider dataProvider;
+    @Inject
+    Picasso picasso;
+    @Inject
+    SelectedSessionsMemory selectedSessionsMemory;
 
     @Override
     public void hideAnnouncement() {
@@ -90,8 +108,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
             currentRecyclerView.setVisibility(View.VISIBLE);
             currentText.setVisibility(View.GONE);
             agenda_buttons.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             currentRecyclerView.setVisibility(View.GONE);
             currentText.setText(text);
             currentText.setVisibility(View.VISIBLE);
@@ -130,7 +147,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
     private void openDrawerItem(@IdRes int itemId) {
         Activity parent = getActivity();
         if (parent instanceof DrawerActivity) {
-            DrawerActivity drawer = (DrawerActivity)parent;
+            DrawerActivity drawer = (DrawerActivity) parent;
             drawer.getPresenter().onNavigationItemSelected(itemId);
             drawer.selectDrawerMenuItem(itemId);
         }
@@ -139,7 +156,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
     @Override
     public void onStart() {
         super.onStart();
-        View.OnClickListener linkOpener = v -> openLink(v.getTag() != null ? v.getTag().toString() : null) ;
+        View.OnClickListener linkOpener = v -> openLink(v.getTag() != null ? v.getTag().toString() : null);
         willhaben.setOnClickListener(linkOpener);
         erste.setOnClickListener(linkOpener);
         pavelka.setOnClickListener(linkOpener);

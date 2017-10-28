@@ -5,12 +5,12 @@ import android.app.PendingIntent;
 import android.os.Build;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+import java.util.Locale;
+
 import at.devfest.app.BuildConfig;
 import at.devfest.app.data.app.model.Session;
 import at.devfest.app.data.app.model.Speaker;
-
-import java.util.List;
-import java.util.Locale;
 
 public final class App {
 

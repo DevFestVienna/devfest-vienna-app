@@ -3,17 +3,16 @@ package at.devfest.app.data.network;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import at.devfest.app.data.app.AppMapper;
-import at.devfest.app.data.app.model.Room;
-import at.devfest.app.data.network.model.Session;
-import at.devfest.app.data.network.model.Speaker;
-
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
-import java8.util.Objects;
+import at.devfest.app.data.app.AppMapper;
+import at.devfest.app.data.app.model.Room;
+import at.devfest.app.data.network.model.Session;
+import at.devfest.app.data.network.model.Speaker;
+import java.util.Objects;
 import java8.util.stream.Collectors;
 
 import static java8.util.stream.StreamSupport.stream;
@@ -33,7 +32,7 @@ public class NetworkMapper {
         }
 
         return stream(from)
-                .filter(Objects::nonNull)
+                .filter(speaker -> speaker != null)
                 .map(speaker -> new at.devfest.app.data.app.model.Speaker(
                         speaker.getId(), speaker.getName(), speaker.getTitle(),
                         speaker.getBio(), speaker.getWebsite(), speaker.getTwitter(),
@@ -49,10 +48,10 @@ public class NetworkMapper {
         }
 
         return stream(from)
-                .filter(Objects::nonNull)
+                .filter(session -> session != null)
                 .map(session -> new at.devfest.app.data.app.model.Session(
                         session.getId(),
-                        Room.getFromId(session.getRoomId()).label,
+                        Room.getFromId(session.getRoomId()).getLabel(),
                         appMapper.toSpeakersList(session.getSpeakersId(), speakersMap),
                         session.getTitle(), session.getDescription(),
                         session.getStartAt(), session.getStartAt().plusMinutes(session.getDuration()),
