@@ -6,26 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-
-import com.squareup.picasso.Picasso
-
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.format.FormatStyle
-
 import at.devfest.app.R
 import at.devfest.app.data.app.model.ScheduleSlot
 import at.devfest.app.data.app.model.Session
 import at.devfest.app.ui.core.recyclerview.BaseViewHolder
 import butterknife.BindView
-import butterknife.ButterKnife
+import com.squareup.picasso.Picasso
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.format.FormatStyle
 
 class ScheduleDayEntry(parent: ViewGroup, private val picasso: Picasso,
                        private val listener: OnSessionClickListener)
     : BaseViewHolder(parent, R.layout.schedule_day_entry) {
-    init {
-        ButterKnife.bind(this, itemView)
-    }
+
     @BindView(R.id.schedule_day_entry_time)
     lateinit var time: TextView
     @BindView(R.id.schedule_day_entry_break_card)

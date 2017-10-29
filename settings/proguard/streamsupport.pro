@@ -1,2 +1,0 @@
--keep class java8.**
--dontwarn java8.**

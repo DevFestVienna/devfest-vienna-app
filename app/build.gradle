@@ -72,7 +72,6 @@ android {
             proguardFile rootProject.file('settings/proguard/picasso.pro')
             proguardFile rootProject.file('settings/proguard/retrofit2.pro')
             proguardFile rootProject.file('settings/proguard/rx-java.pro')
-            proguardFile rootProject.file('settings/proguard/streamsupport.pro')
             proguardFile rootProject.file('settings/proguard/support-design.pro')
             proguardFile rootProject.file('settings/proguard/support-v4.pro')
             proguardFile rootProject.file('settings/proguard/support-v7-appcompat.pro')
@@ -122,8 +121,6 @@ dependencies {
     compile "com.google.firebase:firebase-config:$playVersion"
     compile "com.google.firebase:firebase-core:$playVersion"
     compile "com.google.firebase:firebase-database:$playVersion"
-
-    compile 'net.sourceforge.streamsupport:streamsupport:1.5.1'
 
     compile "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
