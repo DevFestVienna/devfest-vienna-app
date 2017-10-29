@@ -20,7 +20,7 @@ repositories {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-// apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 apply plugin: 'com.android.application'
 apply from: rootProject.file('settings/gradle/jacoco.gradle')
@@ -43,6 +43,11 @@ android {
         buildConfigField 'String', 'GIT_SHA', "\"${gitSha}\""
         buildConfigField 'String', 'API_ENDPOINT', "\"https://devfest.at/api/v1/\""
         vectorDrawables.useSupportLibrary = true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
 
     buildTypes {
@@ -121,7 +126,7 @@ dependencies {
     compile 'net.sourceforge.streamsupport:streamsupport:1.5.1'
 
     compile "com.google.dagger:dagger:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
     compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
@@ -138,17 +143,17 @@ dependencies {
     compile 'com.squareup.moshi:moshi:1.5.0'
 
     compile "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
     compile "frankiesardo:icepick:$icepickVersion"
     provided "frankiesardo:icepick-processor:$icepickVersion"
     annotationProcessor "frankiesardo:icepick-processor:$icepickVersion"
 
     compile "se.emilsjolander:intentbuilder-api:$intentbuilderVersion"
-    annotationProcessor "se.emilsjolander:intentbuilder-compiler:$intentbuilderVersion"
+    kapt "se.emilsjolander:intentbuilder-compiler:$intentbuilderVersion"
 
     compile "com.hannesdorfmann.fragmentargs:annotation:$fragmentargsVersion"
-    annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$fragmentargsVersion"
+    kapt "com.hannesdorfmann.fragmentargs:processor:$fragmentargsVersion"
 
     compile 'com.squareup.sqlbrite:sqlbrite:0.7.0'
 
