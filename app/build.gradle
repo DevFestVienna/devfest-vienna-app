@@ -144,7 +144,7 @@ dependencies {
 
     compile "frankiesardo:icepick:$icepickVersion"
     provided "frankiesardo:icepick-processor:$icepickVersion"
-    annotationProcessor "frankiesardo:icepick-processor:$icepickVersion"
+    kapt "frankiesardo:icepick-processor:$icepickVersion"
 
     compile "se.emilsjolander:intentbuilder-api:$intentbuilderVersion"
     kapt "se.emilsjolander:intentbuilder-compiler:$intentbuilderVersion"

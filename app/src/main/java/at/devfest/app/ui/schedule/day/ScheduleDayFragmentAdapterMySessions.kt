@@ -26,7 +26,7 @@ class ScheduleDayFragmentAdapterMySessions(
     override fun onBindViewHolder(holder: ScheduleDayEntry, position: Int) {
         val slot = slots[position]
         val slotSessions = slot.sessions
-        val selectedSession = findSelectedSession(slot.time, slotSessions)
+        val selectedSession = findSelectedSession(slot.time!!, slotSessions)
 
         if (selectedSession == null) {
             if (slotSessions!!.size > 1) {
@@ -49,7 +49,7 @@ class ScheduleDayFragmentAdapterMySessions(
         return slots.size
     }
 
-    private fun findSelectedSession(slotTime: LocalDateTime?, slotSessions: List<Session>?): Session? {
+    private fun findSelectedSession(slotTime: LocalDateTime, slotSessions: List<Session>?): Session? {
         val selectedSessionId = selectedSessionsMemory.get(slotTime)
         return slotSessions?.firstOrNull { session -> session.id == selectedSessionId }
     }

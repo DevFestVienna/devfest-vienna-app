@@ -35,20 +35,20 @@ public class DataProviderCacheTest {
     public void should_save_sessions_in_memory_keeping_save_time() {
         // Given When
         LocalDateTime before = LocalDateTime.now();
-        cache.saveSessions(sessions);
+        cache.setSessions(sessions);
         LocalDateTime after = LocalDateTime.now();
 
         // Then
-        assertThat(cache.sessions).hasSize(2);
-        assertThat(cache.sessionsFetchedTime).isAtLeast(before);
-        assertThat(cache.sessionsFetchedTime).isAtMost(after);
+        assertThat(cache.getSessions()).hasSize(2);
+        assertThat(cache.getSessionsFetchedTime()).isAtLeast(before);
+        assertThat(cache.getSessionsFetchedTime()).isAtMost(after);
     }
 
     @Test
     public void should_return_sessions_when_cache_time_is_still_active() {
         // Given
-        cache.sessionsFetchedTime = LocalDateTime.now();
-        cache.sessions = sessions;
+        cache.setSessionsFetchedTime(LocalDateTime.now());
+        cache.setSessions(sessions);
 
         // When
         List<Session> result = cache.getSessions();
@@ -60,8 +60,8 @@ public class DataProviderCacheTest {
     @Test
     public void should_return_null_sessions_when_cache_has_expired() {
         // Given
-        cache.sessionsFetchedTime = LocalDateTime.now().minusYears(1);
-        cache.sessions = sessions;
+        cache.setSessionsFetchedTime(LocalDateTime.now().minusYears(1));
+        cache.setSessions(sessions);
 
         // When
         List<Session> result = cache.getSessions();
@@ -74,20 +74,20 @@ public class DataProviderCacheTest {
     public void should_save_speakers_in_memory_keeping_save_time() {
         // Given When
         LocalDateTime before = LocalDateTime.now();
-        cache.saveSpeakers(speakers);
+        cache.setSpeakers(speakers);
         LocalDateTime after = LocalDateTime.now();
 
         // Then
-        assertThat(cache.speakers).hasSize(2);
-        assertThat(cache.speakersFetchedTime).isAtLeast(before);
-        assertThat(cache.speakersFetchedTime).isAtMost(after);
+        assertThat(cache.getSpeakers()).hasSize(2);
+        assertThat(cache.getSpeakersFetchedTime()).isAtLeast(before);
+        assertThat(cache.getSpeakersFetchedTime()).isAtMost(after);
     }
 
     @Test
     public void should_return_speakers_when_cache_time_is_still_active() {
         // Given
-        cache.speakersFetchedTime = LocalDateTime.now();
-        cache.speakers = speakers;
+        cache.setSpeakersFetchedTime(LocalDateTime.now());
+        cache.setSpeakers(speakers);
 
         // When
         List<Speaker> result = cache.getSpeakers();
@@ -99,8 +99,8 @@ public class DataProviderCacheTest {
     @Test
     public void should_return_null_speakers_when_cache_has_expired() {
         // Given
-        cache.speakersFetchedTime = LocalDateTime.now().minusYears(1);
-        cache.speakers = speakers;
+        cache.setSpeakersFetchedTime(LocalDateTime.now().minusYears(1));
+        cache.setSpeakers(speakers);
 
         // When
         List<Speaker> result = cache.getSpeakers();

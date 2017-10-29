@@ -62,7 +62,7 @@ public class DataProvider {
                     .subscribe(speakers -> {
                         subscriber.onNext(speakers);
                         speakersDao.saveSpeakers(speakers);
-                        cache.saveSpeakers(speakers);
+                        cache.setSpeakers(speakers);
                     }, throwable -> Timber.e(throwable, "Error getting speakers from network"));
         } else {
             subscriber.onNext(fromCache);
@@ -92,7 +92,7 @@ public class DataProvider {
                     .subscribe(sessions -> {
                         subscriber.onNext(sessions);
                         sessionsDao.saveSessions(sessions);
-                        cache.saveSessions(sessions);
+                        cache.setSessions(sessions);
                     }, throwable -> Timber.e(throwable, "Error getting sessions from network"));
         } else {
             subscriber.onNext(fromCache);

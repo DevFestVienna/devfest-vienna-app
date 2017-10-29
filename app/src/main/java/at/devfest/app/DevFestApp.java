@@ -39,7 +39,7 @@ public class DevFestApp extends Application {
     }
 
     private void initGraph() {
-        component = AppComponent.Initializer.init(this);
+        component = AppComponent.Initializer.Companion.init(this);
     }
 
     private void initLogger() {

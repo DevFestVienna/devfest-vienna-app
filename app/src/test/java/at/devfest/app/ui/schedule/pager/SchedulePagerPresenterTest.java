@@ -28,7 +28,8 @@ import static org.mockito.Mockito.when;
 public class SchedulePagerPresenterTest {
 
     @Mock SchedulePagerMvp.View view;
-    @Mock DataProvider dataProvider;
+    @Mock
+    DataProvider dataProvider;
 
     private SchedulePagerPresenter presenter;
     private final TestSchedulerProxy schedulerProxy = TestSchedulerProxy.get();

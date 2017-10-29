@@ -32,8 +32,8 @@ constructor(moshi: Moshi, private val appMapper: AppMapper, private val localDat
     fun fromAppSession(from: at.devfest.app.data.app.model.Session?): Session? {
         return if (from == null) {
             null
-        } else Session(from.id, localDateTimeAdapter.toText(from.fromTime),
-                ChronoUnit.MINUTES.between(from.fromTime!!, from.toTime).toInt(),
+        } else Session(from.id, localDateTimeAdapter.toText(from.fromTime!!),
+                ChronoUnit.MINUTES.between(from.fromTime, from.toTime).toInt(),
                 Room.getFromLabel(from.room).id,
                 serialize(appMapper.toSpeakersIds(from.speakers)), from.title, from.description,
                 from.photo)

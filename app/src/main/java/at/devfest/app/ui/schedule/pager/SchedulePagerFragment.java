@@ -12,8 +12,6 @@ import android.widget.ProgressBar;
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
-import org.threeten.bp.LocalDate;
-
 import javax.inject.Inject;
 
 import at.devfest.app.DevFestApp;
