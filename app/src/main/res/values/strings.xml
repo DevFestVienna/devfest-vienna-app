@@ -66,7 +66,7 @@
     <string name="venue_hackathon_info">Located in close proximity to Westbahnhof and U6 Gumpendorferstraße, Stockwerk is one of Vienna\'s finest Coworking spaces.</string>
     <string name="venue_conference_tab">Conference</string>
     <string name="venue_afterparty_tab">Afterparty</string>
-    <string name="venue_hackathon_tab">Hackathon</string>
+    <string name="venue_hackathon_tab">Workshop</string>
 
     <!-- Settings -->
     <string name="settings_notifications">Notifications</string>
@@ -94,13 +94,17 @@
     <string name="home_conference_next_day">This was the program for today. We will continue with an awesome workshop tomorrow morning!</string>
     <string name="home_session_current_title">Running now</string>
     <string name="home_session_next_title">Coming next</string>
+    <string name="home_text_platinum_sponsors">Platinum Sponsors</string>
     <string name="home_text_gold_sponsors">Gold Sponsors</string>
     <string name="home_text_silver_sponsors">Silver Sponsor</string>
     <string name="home_text_bronze_sponsors">Bronze Sponsor</string>
+    <string name="home_sponsor_google">Google Developers</string>
     <string name="home_sponsor_willhaben">willhaben</string>
+    <string name="home_sponsor_oracle">Oracle</string>
     <string name="home_sponsor_erste">Erste Group</string>
     <string name="home_sponsor_pavelka">Pavelka-Denk Personalberatung</string>
     <string name="home_sponsor_openforce">openforce</string>
+    <string name="home_sponsor_ibm_cic">IBM Client Innovation Center</string>
     <string name="home_sponsor_easyname">easyname</string>
     <string name="home_sponsor_c4c_engineering">c4c engineering</string>
     <string name="home_sponsor_creative_workline">creative workline</string>

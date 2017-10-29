@@ -69,7 +69,7 @@ public class NetworkMapperTest {
     public void should_convert_network_sessions_to_app_sessions() {
         // Given
         LocalDateTime startAt = LocalDateTime.now();
-        Session session = new Session(1, startAt, 20, Room.NONE.id, singletonList(10), "title", "description", null);
+        Session session = new Session(1, startAt, 20, Room.NONE.getId(), singletonList(10), "title", "description", null);
         Map<Integer, at.devfest.app.data.app.model.Speaker> speakersMap = new HashMap<>();
         speakersMap.put(10, new at.devfest.app.data.app.model.Speaker(10, "ten", null, null, null, null, null, null, null, null, null));
 
@@ -81,7 +81,7 @@ public class NetworkMapperTest {
         assertThat(result.get(0).getId()).isEqualTo(1);
         assertThat(result.get(0).getFromTime()).isEqualTo(startAt);
         assertThat(result.get(0).getToTime()).isEqualTo(startAt.plusMinutes(20));
-        assertThat(result.get(0).getRoom()).isEqualTo(Room.NONE.label);
+        assertThat(result.get(0).getRoom()).isEqualTo(Room.NONE.getLabel());
         assertThat(result.get(0).getSpeakers().get(0).getId()).isEqualTo(10);
         assertThat(result.get(0).getSpeakers().get(0).getName()).isEqualTo("ten");
         assertThat(result.get(0).getTitle()).isEqualTo("title");

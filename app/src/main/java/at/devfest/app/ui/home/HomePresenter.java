@@ -118,7 +118,7 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
 
     private void loadNewsEntry() {
         if (newsEntry != null && newsEntry.getTitle() != null && newsEntry.getText() != null) {
-            view.updateAnnouncement(newsEntry.getTitle(), newsEntry.getText());
+            view.updateAnnouncement(newsEntry.getTitle(), newsEntry.getText(), newsEntry.getUrl());
         } else {
             view.hideAnnouncement();
         }

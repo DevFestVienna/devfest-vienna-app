@@ -12,7 +12,7 @@ import at.devfest.app.data.app.model.Session;
 
 public interface HomeMvp {
     interface View {
-        void updateAnnouncement(String title, String text);
+        void updateAnnouncement(String title, String text, String url);
 
         void hideAnnouncement();
 

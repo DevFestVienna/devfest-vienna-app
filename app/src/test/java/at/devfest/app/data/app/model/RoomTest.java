@@ -9,7 +9,7 @@ public class RoomTest {
     @Test
     public void should_get_room_for_a_given_id() {
         // Given
-        int id = Room.ROOM_1.id;
+        int id = Room.ROOM_1.getId();
 
         // When
         Room result = Room.getFromId(id);
@@ -33,7 +33,7 @@ public class RoomTest {
     @Test
     public void should_get_room_for_a_given_name() {
         // Given
-        String name = Room.ROOM_1.label;
+        String name = Room.ROOM_1.getLabel();
 
         // When
         Room result = Room.getFromLabel(name);

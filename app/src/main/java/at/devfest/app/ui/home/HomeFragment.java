@@ -57,14 +57,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
     View loading;
     @BindView(R.id.home_sponsor_willhaben)
     View willhaben;
-    @BindView(R.id.home_sponsor_erste)
-    View erste;
-    @BindView(R.id.home_sponsor_pavelka)
-    View pavelka;
-    @BindView(R.id.home_sponsor_openforce)
-    View openforce;
-    @BindView(R.id.home_sponsor_easyname)
-    View easyname;
+    @BindView(R.id.home_sponsor_google)
+    View google;
+    @BindView(R.id.home_sponsor_oracle)
+    View oracle;
+    @BindView(R.id.home_sponsor_ibm_cic)
+    View ibm_cic;
     @BindView(R.id.home_buttons)
     View agenda_buttons;
     @BindView(R.id.home_button_agenda_mine)
@@ -158,19 +156,24 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
         super.onStart();
         View.OnClickListener linkOpener = v -> openLink(v.getTag() != null ? v.getTag().toString() : null);
         willhaben.setOnClickListener(linkOpener);
-        erste.setOnClickListener(linkOpener);
-        pavelka.setOnClickListener(linkOpener);
-        openforce.setOnClickListener(linkOpener);
-        easyname.setOnClickListener(linkOpener);
+        google.setOnClickListener(linkOpener);
+        oracle.setOnClickListener(linkOpener);
+        ibm_cic.setOnClickListener(linkOpener);
         agenda_full.setOnClickListener(v -> openDrawerItem(R.id.drawer_nav_agenda));
         agenda_mine.setOnClickListener(v -> openDrawerItem(R.id.drawer_nav_schedule));
     }
 
     @Override
-    public void updateAnnouncement(String title, String text) {
+    public void updateAnnouncement(String title, String text, String url) {
         newsCard.setVisibility(View.VISIBLE);
         newsTitle.setText(title);
         newsText.setText(text);
+        if (url != null) {
+            newsCard.setOnClickListener(v -> openLink(url));
+        }
+        else {
+            newsCard.setOnClickListener(null);
+        }
     }
 
     @Override

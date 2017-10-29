@@ -20,10 +20,7 @@ repositories {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'org.jetbrains.kotlin.android.extensions'
-androidExtensions {
-    experimental = true
-}
+// apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 apply plugin: 'com.android.application'
 apply from: rootProject.file('settings/gradle/jacoco.gradle')
