@@ -26,16 +26,6 @@ public final class Views {
         }
     }
 
-    @TargetApi(LOLLIPOP)
-    @SuppressWarnings("deprecation")
-    public static Drawable getDrawable(Context context, @DrawableRes int id) {
-        if (App.isCompatible(LOLLIPOP)) {
-            return context.getDrawable(id);
-        } else {
-            return context.getResources().getDrawable(id);
-        }
-    }
-
     public static int getActionBarSize(Context context) {
         if (context == null) {
             return 0;
