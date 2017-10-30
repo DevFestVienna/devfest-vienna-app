@@ -128,7 +128,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
 
     @Override
     protected HomePresenter newPresenter() {
-        return new HomePresenter(this, dbRef, analytics, dataProvider);
+        return new HomePresenter(this, dbRef, analytics, dataProvider, this);
     }
 
     @Override
@@ -170,8 +170,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeMvp
         newsText.setText(text);
         if (url != null) {
             newsCard.setOnClickListener(v -> openLink(url));
-        }
-        else {
+        } else {
             newsCard.setOnClickListener(null);
         }
     }

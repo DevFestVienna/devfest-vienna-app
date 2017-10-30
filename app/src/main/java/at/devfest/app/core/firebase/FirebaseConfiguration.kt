@@ -1,9 +1,8 @@
 package at.devfest.app.core.firebase
 
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-
 import at.devfest.app.R
 import at.devfest.app.utils.Configuration
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 
 /**
  * Created by helmuth on 19/08/16.

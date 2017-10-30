@@ -1,5 +1,6 @@
 package at.devfest.app.ui.home;
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -23,64 +24,46 @@ import at.devfest.app.data.app.model.ScheduleDay;
 import at.devfest.app.data.app.model.ScheduleSlot;
 import at.devfest.app.ui.BaseFragmentPresenter;
 import at.devfest.app.utils.Analytics;
-import icepick.State;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import timber.log.Timber;
 
 /**
  * Created by helmuth on 25/08/16.
  */
 
 public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implements HomeMvp.Presenter {
-    @State
-    Schedule schedule;
-    @State
-    NewsEntry newsEntry;
     private DatabaseReference dbRef;
     private Analytics analytics;
     private DataProvider dataProvider;
+    private LifecycleOwner lifecycleOwner;
     private DatabaseReference newsRef = null;
     private ValueEventListener firebaseListener = null;
-    private Subscription scheduleSubscription = null;
     private boolean isDisplayed = false;
     private boolean firebaseLoaded = false;
     private boolean sessionsLoaded = false;
 
-    public HomePresenter(HomeMvp.View view, DatabaseReference dbRef, Analytics analytics, DataProvider dataProvider) {
+    public HomePresenter(HomeMvp.View view, DatabaseReference dbRef, Analytics analytics, DataProvider dataProvider, LifecycleOwner lifecycleOwner) {
         super(view);
         this.dbRef = dbRef;
         this.analytics = analytics;
         this.dataProvider = dataProvider;
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sessionsLoaded = (schedule != null);
-        firebaseLoaded = (newsEntry != null || schedule != null);
         setVisibility();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if (schedule != null) {
-            // load currently running sessions
-            loadUpcoming();
-        }
-        if (newsEntry != null) {
-            // display current Firebase newsEntry
-            loadNewsEntry();
-        }
         setVisibility();
         // watch for Firebase data
         firebaseListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                newsEntry = dataSnapshot.getValue(NewsEntry.class);
-                loadNewsEntry();
+                NewsEntry newsEntry = dataSnapshot.getValue(NewsEntry.class);
+                loadNewsEntry(newsEntry);
                 setVisibility();
             }
 
@@ -96,27 +79,16 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
         }
         newsRef.addValueEventListener(firebaseListener);
         // check what session is coming next
-        scheduleSubscription = dataProvider.getSchedule()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(scheduleDays -> schedule = scheduleDays,
-                        throwable -> {
-                            sessionsLoaded = true;
-                            setVisibility();
-                            Timber.e(throwable, "Error getting schedule");
-                        },
-                        () -> {
-                            if (schedule == null) {
-                                // view.displayLoadingError();
-                            } else {
-                                loadUpcoming();
-                            }
-                            sessionsLoaded = true;
-                            setVisibility();
-                        });
+        dataProvider.getLiveSchedule().observe(lifecycleOwner, schedule -> {
+            sessionsLoaded = true;
+            setVisibility();
+            if (schedule != null) {
+                loadUpcoming(schedule);
+            }
+        });
     }
 
-    private void loadNewsEntry() {
+    private void loadNewsEntry(NewsEntry newsEntry) {
         if (newsEntry != null && newsEntry.getTitle() != null && newsEntry.getText() != null) {
             view.updateAnnouncement(newsEntry.getTitle(), newsEntry.getText(), newsEntry.getUrl());
         } else {
@@ -125,7 +97,7 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
         firebaseLoaded = true;
     }
 
-    private void loadUpcoming() {
+    private void loadUpcoming(Schedule schedule) {
         ZoneId confZone = ZoneId.of("Europe/Vienna");
         LocalDateTime now = LocalDateTime.now(confZone);
         LocalDate today = LocalDate.now(confZone);
@@ -209,10 +181,6 @@ public class HomePresenter extends BaseFragmentPresenter<HomeMvp.View> implement
             }
             newsRef.removeEventListener(firebaseListener);
             firebaseListener = null;
-        }
-        if (scheduleSubscription != null) {
-            scheduleSubscription.unsubscribe();
-            scheduleSubscription = null;
         }
     }
 

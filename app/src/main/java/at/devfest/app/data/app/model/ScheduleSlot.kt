@@ -7,7 +7,7 @@ import org.threeten.bp.LocalDateTime
 class ScheduleSlot(val time: LocalDateTime? = null, val sessions: List<Session>? = null) : Parcelable {
     constructor(parcel: Parcel)
             : this(parcel.readSerializable() as LocalDateTime,
-                   parcel.createTypedArrayList(Session.CREATOR))
+            parcel.createTypedArrayList(Session.CREATOR))
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeSerializable(time)
@@ -19,7 +19,8 @@ class ScheduleSlot(val time: LocalDateTime? = null, val sessions: List<Session>?
     }
 
     companion object {
-        @JvmField val CREATOR = object : Parcelable.Creator<ScheduleSlot> {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<ScheduleSlot> {
             override fun createFromParcel(parcel: Parcel): ScheduleSlot {
                 return ScheduleSlot(parcel)
             }

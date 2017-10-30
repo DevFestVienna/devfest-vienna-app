@@ -26,7 +26,7 @@ public class VenuePagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return ctx.getString(R.string.venue_conference_tab);
             case 1:
-            //    return ctx.getString(R.string.venue_afterparty_tab);
+                //    return ctx.getString(R.string.venue_afterparty_tab);
             case 2:
                 return ctx.getString(R.string.venue_hackathon_tab);
             default:
@@ -40,7 +40,7 @@ public class VenuePagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new VenueConferenceFragment();
             case 1:
-            //    return new VenueAfterpartyFragment();
+                //    return new VenueAfterpartyFragment();
             case 2:
                 return new VenueHackathonFragment();
             default:

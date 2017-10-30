@@ -2,18 +2,15 @@ package at.devfest.app.core.dagger.module
 
 import android.app.Application
 import android.database.sqlite.SQLiteOpenHelper
-
+import at.devfest.app.data.database.DbOpenHelper
 import com.squareup.sqlbrite.BriteDatabase
 import com.squareup.sqlbrite.SqlBrite
 import com.squareup.sqlbrite.SqlBrite.Logger
-
-import javax.inject.Singleton
-
-import at.devfest.app.data.database.DbOpenHelper
 import dagger.Module
 import dagger.Provides
 import rx.schedulers.Schedulers
 import timber.log.Timber
+import javax.inject.Singleton
 
 @Module
 class DatabaseModule {

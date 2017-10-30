@@ -33,8 +33,8 @@ android {
 
     defaultConfig {
         applicationId 'at.devfest.app'
-        versionCode 29
-        versionName '1.0.1'
+        versionCode 32
+        versionName '1.0.4'
 
         minSdkVersion 15
         targetSdkVersion 26
@@ -103,6 +103,7 @@ ext.okhttpVersion = '3.9.0'
 ext.retrofitVersion = '2.3.0'
 ext.supportVersion = '26.1.0'
 ext.playVersion = '11.4.2'
+ext.architectureVersion = '1.0.0-rc1'
 
 dependencies {
     compile "com.android.support:support-core-ui:$supportVersion"
@@ -114,6 +115,11 @@ dependencies {
     compile "com.android.support:cardview-v7:$supportVersion"
     compile "com.android.support:design:$supportVersion"
     compile "com.android.support:customtabs:$supportVersion"
+
+    implementation "android.arch.lifecycle:common-java8:$architectureVersion"
+    implementation "android.arch.lifecycle:extensions:$architectureVersion"
+    implementation "android.arch.persistence.room:runtime:$architectureVersion"
+    kapt "android.arch.persistence.room:compiler:$architectureVersion"
 
     compile "com.google.android.gms:play-services-base:$playVersion"
     compile "com.google.firebase:firebase-crash:$playVersion"
@@ -129,15 +135,11 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
-    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
 
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.3.0'
 
     compile 'com.jakewharton.timber:timber:4.5.1'
-    compile 'com.squareup.moshi:moshi:1.5.0'
 
     compile "com.jakewharton:butterknife:$butterknifeVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"

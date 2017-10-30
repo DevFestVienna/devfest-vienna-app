@@ -15,6 +15,5 @@ public interface SpeakersListMvp {
     }
 
     interface Presenter {
-        void reloadData();
     }
 }

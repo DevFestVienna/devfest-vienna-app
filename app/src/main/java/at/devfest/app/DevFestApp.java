@@ -3,6 +3,7 @@ package at.devfest.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -32,6 +33,7 @@ public class DevFestApp extends Application {
         AndroidThreeTen.init(this);
         initGraph();
         initLogger();
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 
     public AppComponent component() {

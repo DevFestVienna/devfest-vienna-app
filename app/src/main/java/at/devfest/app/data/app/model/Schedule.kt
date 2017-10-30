@@ -2,8 +2,7 @@ package at.devfest.app.data.app.model
 
 import android.os.Parcel
 import android.os.Parcelable
-
-import java.util.ArrayList
+import java.util.*
 
 class Schedule(val days: ArrayList<ScheduleDay> = ArrayList(0))
     : Parcelable, Iterable<ScheduleDay> {
@@ -14,7 +13,7 @@ class Schedule(val days: ArrayList<ScheduleDay> = ArrayList(0))
     constructor(parcel: Parcel)
             : this(parcel.createTypedArrayList(ScheduleDay.CREATOR))
 
-    fun get(i: Int) : ScheduleDay = days[i]
+    fun get(i: Int): ScheduleDay = days[i]
 
     fun add(day: ScheduleDay) = days.add(day)
 
@@ -28,7 +27,8 @@ class Schedule(val days: ArrayList<ScheduleDay> = ArrayList(0))
     }
 
     companion object {
-        @JvmField val CREATOR = object : Parcelable.Creator<Schedule> {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<Schedule> {
             override fun createFromParcel(parcel: Parcel): Schedule {
                 return Schedule(parcel)
             }

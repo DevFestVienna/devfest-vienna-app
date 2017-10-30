@@ -41,7 +41,7 @@ public class SpeakersListFragment extends BaseFragment<SpeakersListPresenter> im
 
     @Override
     protected SpeakersListPresenter newPresenter() {
-        return new SpeakersListPresenter(this, dataProvider);
+        return new SpeakersListPresenter(this, dataProvider, this);
     }
 
     @Override
@@ -82,8 +82,7 @@ public class SpeakersListFragment extends BaseFragment<SpeakersListPresenter> im
     @Override
     public void displayLoadingError() {
         loading.setVisibility(View.GONE);
-        errorSnackbar = Snackbar.make(loading, R.string.connection_error, Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.connection_error_retry, v -> presenter.reloadData());
+        errorSnackbar = Snackbar.make(loading, R.string.connection_error, Snackbar.LENGTH_INDEFINITE);
         errorSnackbar.show();
     }
 

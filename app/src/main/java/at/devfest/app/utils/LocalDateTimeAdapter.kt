@@ -1,7 +1,4 @@
-package at.devfest.app.core.moshi
-
-import com.squareup.moshi.FromJson
-import com.squareup.moshi.ToJson
+package at.devfest.app.utils
 
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
@@ -17,12 +14,10 @@ constructor() {
 
     private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US)
 
-    @ToJson
     fun toText(dateTime: LocalDateTime): String {
         return dateTime.format(formatter)
     }
 
-    @FromJson
     fun fromText(text: String): LocalDateTime {
         return LocalDateTime.parse(text, formatter)
     }

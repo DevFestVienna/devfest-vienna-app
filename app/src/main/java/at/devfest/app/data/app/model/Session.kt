@@ -36,7 +36,8 @@ class Session(val id: Int = 0, val room: String? = null, val speakers: List<Spea
     }
 
     companion object {
-        @JvmField val CREATOR = object : Parcelable.Creator<Session> {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<Session> {
             override fun createFromParcel(parcel: Parcel): Session {
                 return Session(parcel)
             }

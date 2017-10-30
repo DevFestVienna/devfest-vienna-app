@@ -3,13 +3,11 @@ package at.devfest.app.ui.schedule.day
 import android.support.v4.util.Pair
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-
-import com.squareup.picasso.Picasso
-
 import at.devfest.app.data.app.SelectedSessionsMemory
 import at.devfest.app.data.app.model.Room
 import at.devfest.app.data.app.model.ScheduleSlot
 import at.devfest.app.data.app.model.Session
+import com.squareup.picasso.Picasso
 
 class ScheduleDayFragmentAdapterAllSessions(slots: List<ScheduleSlot>, private val picasso: Picasso, private val selectedSessionsMemory: SelectedSessionsMemory, private val listener: ScheduleDayEntry.OnSessionClickListener) : RecyclerView.Adapter<ScheduleDayEntry>() {
 

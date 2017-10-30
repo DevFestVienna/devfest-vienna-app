@@ -14,7 +14,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import at.devfest.app.core.moshi.LocalDateTimeAdapter;
+import at.devfest.app.utils.LocalDateTimeAdapter;
 import at.devfest.app.data.app.SelectedSessionsMemory;
 import at.devfest.app.data.database.DbMapper;
 import at.devfest.app.data.database.model.SelectedSession;

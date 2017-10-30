@@ -11,6 +11,6 @@ public interface SchedulePagerMvp {
     }
 
     interface Presenter {
-        void reloadData();
+
     }
 }

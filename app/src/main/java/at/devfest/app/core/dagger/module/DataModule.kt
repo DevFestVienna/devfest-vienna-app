@@ -3,9 +3,8 @@ package at.devfest.app.core.dagger.module
 import android.app.Application
 import android.content.SharedPreferences
 import android.support.v7.preference.PreferenceManager
-import at.devfest.app.core.moshi.LocalDateTimeAdapter
+import at.devfest.app.utils.LocalDateTimeAdapter
 import com.jakewharton.picasso.OkHttp3Downloader
-import com.squareup.moshi.Moshi
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
@@ -23,14 +22,6 @@ class DataModule {
     @Singleton
     internal fun provideSharedPreferences(app: Application): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(app)
-    }
-
-    @Provides
-    @Singleton
-    internal fun provideMoshi(localDateTimeAdapter: LocalDateTimeAdapter): Moshi {
-        return Moshi.Builder()
-                .add(localDateTimeAdapter)
-                .build()
     }
 
     @Provides

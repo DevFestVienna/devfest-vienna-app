@@ -41,7 +41,7 @@ public class SchedulePagerFragment extends BaseFragment<SchedulePagerPresenter> 
 
     @Override
     protected SchedulePagerPresenter newPresenter() {
-        return new SchedulePagerPresenter(this, dataProvider);
+        return new SchedulePagerPresenter(this, dataProvider, this);
     }
 
     @Override
@@ -78,8 +78,7 @@ public class SchedulePagerFragment extends BaseFragment<SchedulePagerPresenter> 
     @Override
     public void displayLoadingError() {
         loading.setVisibility(View.GONE);
-        errorSnackbar = Snackbar.make(loading, R.string.connection_error, Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.connection_error_retry, v -> presenter.reloadData());
+        errorSnackbar = Snackbar.make(loading, R.string.connection_error, Snackbar.LENGTH_INDEFINITE);
         errorSnackbar.show();
     }
 

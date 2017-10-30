@@ -2,7 +2,6 @@ package at.devfest.app.data.database;
 
 import android.os.Build;
 
-import com.squareup.moshi.Moshi;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,11 +17,11 @@ import java.util.List;
 import java.util.Map;
 
 import at.devfest.app.BuildConfig;
-import at.devfest.app.core.moshi.LocalDateTimeAdapter;
 import at.devfest.app.data.app.AppMapper;
 import at.devfest.app.data.app.model.Room;
 import at.devfest.app.data.app.model.Session;
 import at.devfest.app.data.app.model.Speaker;
+import at.devfest.app.utils.LocalDateTimeAdapter;
 
 import static com.google.common.truth.Truth.assertThat;
 import static java.util.Collections.singletonList;
@@ -33,16 +32,14 @@ import static org.mockito.Mockito.when;
 public class DbMapperTest {
 
     private DbMapper dbMapper;
-    private final Moshi moshi = new Moshi.Builder().build();
     private final AppMapper appMapper = new AppMapper();
     private final LocalDateTime now = LocalDateTime.now();
-
-    @Mock LocalDateTimeAdapter adapter;
+    private final LocalDateTimeAdapter adapter = new LocalDateTimeAdapter();
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        dbMapper = new DbMapper(moshi, appMapper, adapter);
+        dbMapper = new DbMapper(appMapper, adapter);
     }
 
     @Test

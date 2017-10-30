@@ -1,10 +1,8 @@
 package at.devfest.app.core.firebase
 
 import android.os.Bundle
-
-import com.google.firebase.analytics.FirebaseAnalytics
-
 import at.devfest.app.utils.Analytics
+import com.google.firebase.analytics.FirebaseAnalytics
 
 /**
  * Created by helmuth on 19/08/16.

@@ -2,15 +2,12 @@ package at.devfest.app.ui.schedule.day
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-
-import com.squareup.picasso.Picasso
-
-import org.threeten.bp.LocalDateTime
-
 import at.devfest.app.data.app.SelectedSessionsMemory
 import at.devfest.app.data.app.model.Room
 import at.devfest.app.data.app.model.ScheduleSlot
 import at.devfest.app.data.app.model.Session
+import com.squareup.picasso.Picasso
+import org.threeten.bp.LocalDateTime
 
 class ScheduleDayFragmentAdapterMySessions(
         private val slots: List<ScheduleSlot>,

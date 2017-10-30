@@ -1,21 +1,18 @@
 package at.devfest.app.core.dagger.module
 
 import android.app.Application
-
+import at.devfest.app.core.firebase.FirebaseAnalyticsWrapper
+import at.devfest.app.core.firebase.FirebaseConfiguration
+import at.devfest.app.utils.Analytics
+import at.devfest.app.utils.Configuration
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-
-import javax.inject.Singleton
-
-import at.devfest.app.core.firebase.FirebaseAnalyticsWrapper
-import at.devfest.app.core.firebase.FirebaseConfiguration
-import at.devfest.app.utils.Analytics
-import at.devfest.app.utils.Configuration
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * Created by helmuth on 19/08/16.
