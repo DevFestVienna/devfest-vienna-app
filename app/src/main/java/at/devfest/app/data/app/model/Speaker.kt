@@ -6,9 +6,11 @@ import android.os.Parcelable
 class Speaker(val id: Int = 0, val name: String? = null, val title: String? = null,
               val bio: String? = null, val website: String? = null, val twitter: String? = null,
               val github: String? = null, val gplus: String? = null, val xing: String? = null,
-              val linkedin: String? = null, val photo: String? = null) : Parcelable {
+              val linkedin: String? = null, val photo: String? = null,
+              val thumbnail: String? = null) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
+            parcel.readString(),
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
@@ -33,6 +35,7 @@ class Speaker(val id: Int = 0, val name: String? = null, val title: String? = nu
         parcel.writeString(xing)
         parcel.writeString(linkedin)
         parcel.writeString(photo)
+        parcel.writeString(thumbnail)
     }
 
     override fun describeContents(): Int {

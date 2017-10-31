@@ -1,7 +1,12 @@
 package at.devfest.app.ui.schedule.day;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -37,7 +42,18 @@ public class ScheduleDayEntrySpeaker extends LinearLayout {
     private void bind(Speaker speaker, Picasso picasso) {
         String photoUrl = speaker.getPhoto();
         if (!TextUtils.isEmpty(photoUrl)) {
-            picasso.load(photoUrl).transform(new CircleTransformation()).into(photo);
+            Drawable placeholder = null;
+            if (speaker.getThumbnail() != null) {
+                byte[] decodedThumbnail = Base64.decode(speaker.getThumbnail(), 0);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedThumbnail, 0, decodedThumbnail.length);
+                placeholder = new BitmapDrawable(bitmap);
+            }
+            if (placeholder != null) {
+                picasso.load(photoUrl).placeholder(placeholder).transform(new CircleTransformation()).into(photo);
+            }
+            else {
+                picasso.load(photoUrl).transform(new CircleTransformation()).into(photo);
+            }
         }
 
         name.setText(speaker.getName());

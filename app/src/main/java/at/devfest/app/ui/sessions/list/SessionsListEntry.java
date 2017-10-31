@@ -1,6 +1,11 @@
 package at.devfest.app.ui.sessions.list;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -46,7 +51,18 @@ public class SessionsListEntry extends BaseViewHolder {
         if (TextUtils.isEmpty(photoUrl)) {
             photo.setImageDrawable(null);
         } else {
-            picasso.load(photoUrl).transform(new CircleTransformation()).into(photo);
+            Drawable placeholder = null;
+            if (session.getThumbnail() != null) {
+                byte[] decodedThumbnail = Base64.decode(session.getThumbnail(), 0);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedThumbnail, 0, decodedThumbnail.length);
+                placeholder = new BitmapDrawable(bitmap);
+            }
+            if (placeholder != null) {
+                picasso.load(photoUrl).placeholder(placeholder).transform(new CircleTransformation()).into(photo);
+            }
+            else {
+                picasso.load(photoUrl).transform(new CircleTransformation()).into(photo);
+            }
         }
 
         title.setText(session.getTitle());

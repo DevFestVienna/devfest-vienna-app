@@ -48,4 +48,19 @@ public final class App {
         }
         return photoUrl;
     }
+
+    @Nullable
+    public static String getThumbnail(@Nullable Session session) {
+        String thumbnail = null;
+        if (session != null) {
+            thumbnail = session.getThumbnail();
+            if (thumbnail == null) {
+                List<Speaker> speakers = session.getSpeakers();
+                if (speakers != null && !speakers.isEmpty()) {
+                    thumbnail = speakers.get(0).getThumbnail();
+                }
+            }
+        }
+        return thumbnail;
+    }
 }

@@ -8,7 +8,7 @@ import org.threeten.bp.LocalDateTime
 class Session(val id: Int = 0, val room: String? = null, val speakers: List<Speaker>? = null,
               val title: String? = null, val description: String? = null,
               val fromTime: LocalDateTime? = null, val toTime: LocalDateTime? = null,
-              val photo: String? = null) : Parcelable {
+              val photo: String? = null, var thumbnail: String? = null) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),

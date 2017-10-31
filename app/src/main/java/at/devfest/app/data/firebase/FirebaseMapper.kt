@@ -23,7 +23,7 @@ constructor(private val appMapper: AppMapper) {
                             speaker.id, speaker.name, speaker.title,
                             speaker.bio, speaker.website, speaker.twitter,
                             speaker.github, speaker.gplus, speaker.xing,
-                            speaker.linkedin, speaker.thumbnailUrl)
+                            speaker.linkedin, speaker.thumbnailUrl, speaker.thumbnail)
                 }
 
     }
@@ -41,7 +41,7 @@ constructor(private val appMapper: AppMapper) {
                             appMapper.toSpeakersList(session.speakers, speakersMap),
                             session.title, session.description,
                             session.startAtTime, session.endAtTime,
-                            session.thumbnailUrl)
+                            session.thumbnailUrl, session.thumbnail)
                 }
 
     }

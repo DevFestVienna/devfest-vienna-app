@@ -1,5 +1,9 @@
 package at.devfest.app.ui.sessions.details;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -183,7 +188,19 @@ public class SessionDetailsActivity extends BaseActivity<SessionDetailsPresenter
     private void bindHeaderPhoto(Session session, int headerWidth) {
         String photoUrl = App.getPhotoUrl(session);
         if (!TextUtils.isEmpty(photoUrl)) {
-            picasso.load(photoUrl).resize(headerWidth, 0).into(photo);
+            Drawable placeholder = null;
+            String thumbnail = App.getThumbnail(session);
+            if (thumbnail != null) {
+                byte[] decodedThumbnail = Base64.decode(thumbnail, 0);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedThumbnail, 0, decodedThumbnail.length);
+                placeholder = new BitmapDrawable(bitmap);
+            }
+            if (placeholder != null) {
+                picasso.load(photoUrl).placeholder(placeholder).resize(headerWidth, 0).into(photo);
+            }
+            else {
+                picasso.load(photoUrl).resize(headerWidth, 0).into(photo);
+            }
         }
     }
 

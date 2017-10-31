@@ -10,8 +10,8 @@ import org.threeten.bp.format.DateTimeFormatter
 data class Session(val id: Int = 0, val startAt: String? = null, val duration: Int = 0,
                    val roomId: Int = 0, val speakers: List<Int>? = null,
                    val title: String? = null, val description: String? = null,
-                   val track: String? = null,
-                   val thumbnailUrl: String? = null) {
+                   val track: String? = null, val thumbnailUrl: String? = null,
+                   var thumbnail: String? =  null) {
     private val dateTimeFormatter: DateTimeFormatter
             = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
 
